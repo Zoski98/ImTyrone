@@ -1,0 +1,643 @@
+@font-face {
+  font-family: PlayFair;
+  src: url(./styles/PlayfairDisplay.ttf);
+}
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 62.5%;
+  font-family: PlayFair;
+}
+html,body{overflow: auto;}
+.e403{height: 50rem;margin-top: 10rem;}
+
+::-webkit-scrollbar{display: none;}
+
+
+/* ADD USER ACCOUNT FROM ADMIN */
+.form-add-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+}
+.formUser{
+  height: 45vh;
+  font-size: 3rem;
+  text-align: center;
+}
+.comment-form
+{
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 25rem;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.input{width: 80rem;
+height: 10rem;}
+#formFile{
+  width: 50rem;
+}
+.label-txt{
+  font-size: 2rem;
+}
+.submit-comment{font-size: 1rem;}
+
+/* SECTION PART - WHEN USER LOGS IN */
+.part1{width: 50%;min-height: 100vh;background-color: #232526;display: flex;align-items: center;justify-content: center;}
+.part2{width: 50%;min-height: 100vh;background-color: #ef820D;display: flex;align-items: center;justify-content: center;}
+.sector{display: flex;align-items: center;}
+.sections{width: 25rem; height: 25rem;transition:ease 0.8s;}
+.sections:hover{height: 35rem; width: 35rem;}
+
+
+/* USER REGISTER - USER LOGIN FORM */
+
+
+.section{
+  position: relative;
+  min-height: 100vh;
+  background: #ef820D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.section.active{
+  background: #111111;
+}
+
+.section .container{
+  position: relative;
+  width: 80rem;
+  height: 50rem;
+  background: #111111;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.section .container .user
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.section .container .user .imgBx
+{
+  position: relative;
+  width: 50%;
+  height: 100%;
+  transition: 0.5;
+}
+.section .container .user .imgBx img
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+.section .container .user .formBx
+{
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  transition: 0.5s;
+}
+.section .container .user .formBx h2
+{
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #555;
+}
+.section .container .user .formBx input
+{
+  width: 100%;
+  padding: 1rem;
+  background: #F5F5F5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 1.4rem;
+  margin: 0.8rem 0;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
+}
+.section .container .user .formBx input[type="submit"]
+{
+  max-width: 10rem;
+  background: #fd6A02;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+}
+.section .container .user.signupBx .formBx input[type="submit"]
+{
+  background: #111111;
+}
+.section .container .user .formBx .signup
+{
+  position: relative;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.section .container .user .formBx .signup a
+{
+  font-weight: 600;
+  text-decoration: none;
+  color: #111111;
+  font-size: 1.2rem;
+}
+.section .container.active .user .formBx .signup a
+{
+  font-weight: 600;
+  text-decoration: none;
+  color: #fd6A02;
+  font-size: 1.2rem;
+}
+.section .container .signupBx
+{
+  pointer-events: none;
+}
+.section .container.active .signupBx
+{
+  pointer-events: initial;
+}
+.section .container .signupBx .formBx
+{
+  top: 100%;
+}
+.section .container.active .signupBx .formBx
+{
+  top: 0;
+}
+.section .container .signupBx .imgBx
+{
+  top: -100%;
+  transition: 0.5s;
+}
+.section .container.active .signupBx .imgBx
+{
+  top: 0;
+}
+
+.section .container .signinBx .formBx
+{
+  top: 0;
+}
+.section .container.active .signinBx .formBx{
+  top: 100%;
+}
+
+.section .container .signinBx .imgBx
+{
+  top: 0;
+}
+.section .container.active .signinBx .imgBx
+{
+  top:-100%;
+}
+
+@media (max-width:99.1rem)
+{
+  .section .container
+  {
+      max-width: 40rem;
+  }
+  .section .container .imgBx
+  {
+      display: none;
+  }
+  .section .container .user .formBx
+  {
+      width: 100%;
+  }
+  .section .container.active .signinBx .formBx
+  {
+      top: -100%;
+  }
+}
+
+
+
+/* FEED WORLD COMMUNITY USER (ADMIN) */
+
+
+#admin-table{
+  font-size: 6.5rem;
+}
+
+.tables{
+  margin-left: 20rem;
+  margin-right: 16rem;
+  padding-top: 5rem;
+  background: #ef820D;
+}
+
+#create{
+  font-size: 1.5rem;
+}
+
+.create-post-admin{
+  padding-top: 15rem;
+}
+
+
+/* COMMENTS PAGE */
+
+.post-comments{
+  margin-left: 20rem;
+  height: auto;
+  margin-top: 10rem;
+  margin-right: 20rem;
+  background:#1e1e1e;
+}
+
+
+.comments{
+  min-height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: #ef820D ;
+}
+
+.comment-container{
+  display: flex;
+  height: 25rem;
+  background-color: #efefef ;
+  margin: 5rem;
+  padding: 2rem;
+  color:#1e1e1e;
+
+  
+}
+
+.comment-username{
+  width: 15%;
+  text-align: center;
+  padding-top: 3%;
+  padding-right: 3rem;
+}
+
+.comment-content{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  width: 75%;
+}
+
+.comment-delete{
+  width: 10%;
+  text-align: center;
+  padding-top: 3%;
+
+}
+
+.post{
+  display: flex;
+  flex-direction: column;
+  min-height: 20rem;
+  color: #efefef;
+  padding-top: 2rem;
+}
+
+.post-title H1 {
+  text-align: center;
+  font-size: 5rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  padding-bottom: 2rem;
+}
+
+.title-post{
+  margin-left: 6rem;
+  margin-right: 6rem;
+  margin-bottom: 6rem;
+}
+
+.add-comment{
+  height: auto;
+}
+
+
+/* SIDEBAR */
+
+.side-icon{
+  width: 6rem;
+  height: 5rem;
+  padding-right: 1rem;
+}
+
+.bot-icon{
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0.5rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+.navbar{
+  width: 7rem;
+  height: 100vh;
+  position: fixed;
+  background-color: #111111;
+  transition: width 600ms ease;
+  overflow: scroll;
+}
+
+.navbar-nav{
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.nav-item{
+  width: 100%;
+}
+
+.nav-item:last-child{
+  margin-top: auto;
+}
+
+.nav-link{
+  display: flex;
+  align-items: center;
+  height: 7rem;
+  text-decoration: none;
+  color: #fd6A02;
+  filter: grayscale(100%) opacity(0.7);
+  transition: 600ms;
+}
+
+.nav-link:hover{
+  filter: grayscale(0%) opacity(1);
+  background-color: #111111;
+  color: #fd6A02;
+  
+}
+
+.link-text{
+  display: none;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+
+.nav-link svg{
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 1.5rem;
+}
+
+.navbar:hover{
+  width: 16rem;
+
+}
+
+.navbar:hover .link-text{
+  display: block;
+}
+
+.fa-primary{color:#F9812A;}
+.fa-secondary{color:#db5c01;}
+
+.fa-primary,
+.fa-secondary{
+  transition: 600ms;
+}
+
+.logo{
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 0.3ch;
+  color: #db5c01;
+  background-color: #111111;
+  width: 100%;
+}
+
+.logo img{
+  transform: rotate(0deg);
+  transition: transform (600ms);
+}
+
+.navbar:hover .logo img{
+  transform: rotate(-180deg);
+  padding-left: 1rem;
+  padding-right: 0;
+
+}
+
+@media only screen and (max-width:600px){
+  .navbar{
+      bottom: 0;
+      height: 7rem;
+      width: 100vw;
+  }
+  .logo{
+      display: none;
+  }
+
+  .navbar-nav{
+      flex-direction: row;
+      max-width: 100vw;
+  }
+
+  .nav-link{
+      justify-content: center;
+  }
+  
+  main{
+      margin: 0;
+  }
+  .navbar:hover .link-text{
+      display: none;
+
+  }
+  .nav-item{
+    width: 20%;
+  }
+
+  .navbar:hover{
+      width: 100%;
+  }
+
+  .tables{
+    margin-bottom: 7rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+  }
+
+  .post-comments{
+    margin-left: 0rem;
+    padding-top: 0;
+  }
+
+  .post{
+    margin-right: 0rem;
+  }
+
+  .comment-container{
+    margin-right: 0;
+  }
+
+  .add-comment{margin-right: 0;
+  }
+
+}
+
+@media only screen and (min-width:600px){
+  .navbar{
+      top: 0;
+      width: 5rem;
+      height: 100vh;
+  }
+
+  .navbar:hover{
+      width: 16rem;
+  }
+
+  .navbar:hover .link-text{
+      display: inline;
+      transition: opacity (600ms);
+
+  }
+}
+
+
+/* INDEX USER DASHBOARD */
+
+.dashboard-table{
+  height: auto;
+  width: 75%;
+  margin: 0 auto;
+  font-size: 10rem;
+}
+
+
+/* ADMIN HOME - INDEX */
+
+.cards{
+  display: flex;
+  min-height: 100vh;
+  width:100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.routes{
+  width: 20%;
+  height: 35rem;
+  border-radius: 20px;
+  text-align: center;
+  
+}
+
+.img{
+  width: 100%;
+  height: 100%;
+}
+
+li{
+  list-style: none;
+}
+.icons{
+  width: 15rem;
+  height: 15rem;
+}
+
+.icons:hover{
+  height: 25rem;
+  width: 25rem;
+}
+
+
+
+
+
+/* USER FEED ;;; */
+
+.time {
+  font-size: 9px !important
+}
+
+.socials i {
+  margin-right: 14px;
+  font-size: 17rem;
+  color: #d2c8c8;
+  cursor: pointer
+}
+
+.feed-image img {
+  width: 100%;
+  height: auto
+}
+
+.feed-card{
+  font-size: 20rem;
+}
+
+.bg-white border mt-2{
+  min-height: 30rem;
+}
+
+
+/* USER COMMUNITY ;;; */
+
+.user-posts{
+  margin-left: 20rem;
+  overflow: auto;
+  padding-top: 10rem;
+}
+
+.post1{margin-bottom: 5rem;margin-right: 40rem;
+  height: 25rem;background-color: #fff;border-radius: 20px;}
+.container{height: 100%;display: flex;justify-content: space-evenly;}
+.avatar{width: 40%;text-align: center;display: flex;flex-direction: column;justify-content: space-around;}
+.post-date{width: 100%;display: flex;flex-direction: column;justify-content: space-between;}
+.user-type{width: 20%;padding-top: 6rem;}
+.date-time{text-align: center;}
+.post-title{text-align: center;padding-top: 1rem;}
+.post-content{
+  height: 100%;
+padding-top: 2rem;
+margin-left: 2rem;
+margin-right: 2rem;
+
+}

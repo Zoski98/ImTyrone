@@ -1,0 +1,53 @@
+body{
+    width: 100%;
+    min-height: 100vh;
+}
+/* HEAD PAGE */
+.top{display: flex;min-height: 100vh;background-color: #111111;}
+
+.top-left{display: flex;flex-direction: column;justify-content: space-evenly;width: 50%;padding-left: 5rem;}
+.title{font-size: 10rem;color: #fd6A02;}
+.top-text{color: #fd6A02;}
+.top-right{width: 50%;padding-left: 20rem;padding-top: 20rem;}
+.earth{width: 40rem;height: 40rem;}
+
+/* MIDDLE PAGE */
+.middle{display: flex;height:20rem;align-items: center;text-align: center;background-color: #111111;}
+.link{width: 50%;border-radius: 20px;margin-left: 20rem;margin-right: 20rem;}
+.links{text-decoration: none;font-size: 2.5rem;color: #fd6A02;padding-left: 2.5rem;}
+.link:hover{background-color: #fd6A02;}
+.links:hover{color: #111111;}
+
+/* MALCOLM PAGE */
+.malcolm{height: 100rem;display: flex; align-items:center;}
+.users{height: 100%; margin-left: 5rem;margin-right: 5rem;text-align: center;display: flex;flex-direction: column;justify-content: space-evenly;}
+
+/* BOTTOM PAGE */
+.bottom{height: 100rem;display: flex;}
+.bottom-left{width: 50%;background-color: #0F0E0E ;padding-left: 5rem;padding-right: 5rem;display: flex;flex-direction: column;justify-content: space-around;text-align: center;}
+.bottom-right{width: 50%;background-color: #fd6A02;padding-left: 5rem;padding-right: 5rem;display: flex;text-align: center;flex-direction: column;}
+.image{height: 40rem;padding-top: 10rem;}
+.name{height: 10rem;padding-top: 5rem;}
+.details{height: 60rem;padding-top: 15rem;}
+.orange{color:#fd6A02;font-size: 5rem;}
+.oranges{color:#fd6A02;font-size: 2rem;}
+.black{color: #0F0E0E ; font-size: 5rem;}
+.blacks{color: #0F0E0E ;}
+.x{height: 25rem;width: 25rem;}
+#x{height: 20.5rem;width: 20.5rem;margin-top: 2.7rem;}
+
+/* MINIFOT PAGE */
+.minifut{height: 25rem;display: flex;align-items: center;}
+.info{width: 50%;margin-left: 5rem;margin-right: 5rem;}
+#input{font-size: 2.5rem;background-color:#111111;color:#fd6A02;}
+
+
+/* FOOTER PAGE */
+footer{height: 35rem;background-color: #111111;display: flex;justify-content: space-evenly;}
+.fot{height: 100%; width:25%;align-items: center; display: flex;flex-direction: column;}
+.fot-content{ height: 30rem; display: flex;flex-direction: column;justify-content: space-evenly;}
+.fot-title{color: #fd6A02;font-size: 3rem;margin-top: 3.5rem;}
+.content-fot{color: white; padding-left: 2rem;}
+.media{display: flex; align-items: center;}
+.ico-media{width: 2.5rem;height: 2.5rem;}
+
