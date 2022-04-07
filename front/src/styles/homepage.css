@@ -3,12 +3,30 @@ body{
     min-height: 100vh;
 }
 /* HEAD PAGE */
-.top{display: flex;min-height: 100vh;background-color: #111111;}
+.logo{width: 25rem;height: 5rem;}
+.nav-in{color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 13rem;
+    border-radius: 2rem;
+    height: 4rem;
+    background-color: #ef820d;
+    padding: 0.9rem;
+    
+}
+.top{display: flex;flex-direction: column;color: white; min-height: 100vh;background-color: #1e1e1e;width: 100%;}
+.nav{height: 10rem;margin-left: 5rem; margin-right: 5rem; display: flex;justify-content: space-between;align-items: center;}
+.top-title{font-size: 9rem;}
+.top-reg{color: white;}
+.top-content{display: flex;margin-top: 2.5rem;}
+.connected-earth{width: 70rem;height: 55rem;}
+#getin{font-size: 2rem;border: 1px solid #ef820d;}
+#getin:hover{background-color: #ef820d;}
 
-.top-left{display: flex;flex-direction: column;justify-content: space-evenly;width: 50%;padding-left: 5rem;}
+.top-left{display: flex;flex-direction: column;width: 50%;padding-left: 5rem;height: 45rem;margin-top: 8rem;}
 .title{font-size: 10rem;color: #fd6A02;}
-.top-text{color: #fd6A02;}
-.top-right{width: 50%;padding-left: 20rem;padding-top: 20rem;}
+.top-text{margin-top: 3.5rem;margin-bottom: 3.5rem;width: 45rem;}
+.top-right{width: 50%;}
 .earth{width: 40rem;height: 40rem;}
 
 /* MIDDLE PAGE */
@@ -19,35 +37,82 @@ body{
 .links:hover{color: #111111;}
 
 /* MALCOLM PAGE */
-.malcolm{height: 100rem;display: flex; align-items:center;}
-.users{height: 100%; margin-left: 5rem;margin-right: 5rem;text-align: center;display: flex;flex-direction: column;justify-content: space-evenly;}
+.malcolm{height: 100rem;display: flex; align-items:center;background-color: white;}
+.users{height: 100%; margin-left: 5rem;margin-right: 5rem;text-align: center;display: flex;align-items: center;flex-direction: column;justify-content: space-evenly;}
+.users img{
+    width: 20rem;
+    height: 20rem;
+}
+.users-name{font-weight: bold;}
+.users-description{font-weight: bold;padding-bottom: 20rem;}
 
 /* BOTTOM PAGE */
-.bottom{height: 100rem;display: flex;}
-.bottom-left{width: 50%;background-color: #0F0E0E ;padding-left: 5rem;padding-right: 5rem;display: flex;flex-direction: column;justify-content: space-around;text-align: center;}
-.bottom-right{width: 50%;background-color: #fd6A02;padding-left: 5rem;padding-right: 5rem;display: flex;text-align: center;flex-direction: column;}
-.image{height: 40rem;padding-top: 10rem;}
-.name{height: 10rem;padding-top: 5rem;}
-.details{height: 60rem;padding-top: 15rem;}
-.orange{color:#fd6A02;font-size: 5rem;}
-.oranges{color:#fd6A02;font-size: 2rem;}
+.bottom{height: 135rem;display: flex;}
+.bottom-left{align-items: center; color: white; padding-top: 10rem; width: 50%;background-color: #0F0E0E ;padding-left: 5rem;padding-right: 5rem;display: flex;flex-direction: column;text-align: center;}
+.bottom-right{align-items: center; padding-top: 10rem; width: 50%;background-color: bisque;padding-left: 5rem;padding-right: 5rem;display: flex;text-align: center;flex-direction: column;}
+.image{height: auto;padding-top: 5rem;}
+.name{height: 10rem;}
+.details{height: 60rem;padding-top: 10rem;}
+.orange{font-size: 5rem;}
+.oranges{font-size: 2rem;}
 .black{color: #0F0E0E ; font-size: 5rem;}
 .blacks{color: #0F0E0E ;}
-.x{height: 25rem;width: 25rem;}
-#x{height: 20.5rem;width: 20.5rem;margin-top: 2.7rem;}
+.x{height: 45rem;width: 45rem;}
 
 /* MINIFOT PAGE */
-.minifut{height: 25rem;display: flex;align-items: center;}
-.info{width: 50%;margin-left: 5rem;margin-right: 5rem;}
+.minifut{height: 100rem;display: flex;align-items: center;flex-direction: column;padding-top: 10rem;background-color: white;}
+.info{margin-left: 5rem;margin-right: 5rem;text-align: center;}
 #input{font-size: 2.5rem;background-color:#111111;color:#fd6A02;}
+.faqs{font-size: 5rem;font-weight: bolder;}
+.minifut-content{display: flex;width: 100%;padding-top: 10rem;}
+.minifut-left{width: 40%;margin-left: 8rem;}
+.minifut-right{width: 60%;display: flex;justify-content: space-around;flex-direction: column;margin-left: 20rem;margin-right: 5rem;}
+.faqs-img{height: 55rem;width: 55rem;}
+.faqs-questions{border: 0.2rem solid grey;height: 10rem;display: flex;justify-content: space-around;padding-top: 4rem;border-radius: 1rem;}
+.faqs-question{font-weight: 900;font-size: 2rem;}
+
+
+/* Newsletter page */
+
+.newsletter{height: 55rem;background-color: white;}
+.news-content{background-color: black;color: white;height: 45rem;display: flex;flex-direction: column;justify-content: space-evenly;align-items: center;width: 75%;margin-left: 20rem;border-radius: 4rem;text-align: center;padding: 7rem;}
+.news-title{font-size: 5rem;}
+.news-email{border-radius: 4rem;padding-left: 4rem;width: 65rem;height: 7rem;font-size: 2rem;font-weight: bold;border: none;}
+.news-button{width: 20rem;height: 7rem;border-radius: 4rem;margin-left: 50rem;position: absolute;background-color: #ef820d;color: white;font-size: 2rem;border: none;}
+.news-form{display: flex;}
+.news-text{margin-left: 10rem;margin-right: 10rem;}
+
 
 
 /* FOOTER PAGE */
-footer{height: 35rem;background-color: #111111;display: flex;justify-content: space-evenly;}
+footer{height: 50rem;display: flex;flex-direction: column;background-color: white;}
+.fot-contents{display: flex;flex-direction: row;justify-content: space-between;align-items: center;}
 .fot{height: 100%; width:25%;align-items: center; display: flex;flex-direction: column;}
 .fot-content{ height: 30rem; display: flex;flex-direction: column;justify-content: space-evenly;}
 .fot-title{color: #fd6A02;font-size: 3rem;margin-top: 3.5rem;}
-.content-fot{color: white; padding-left: 2rem;}
+.content-fot{color: black; padding-left: 2rem;}
 .media{display: flex; align-items: center;}
 .ico-media{width: 2.5rem;height: 2.5rem;}
+.fot-logo{width: 100%;height: 15%;}
+.copyright{height: 15%;text-align:center}
 
+@media only screen and (max-width:523px){
+    .top-left{width: 100%;}
+    .top{background-image: none;}
+    .title{font-size: 5rem;}
+    .malcolm{flex-direction: column;height: auto;}
+    .bottom{height: auto; flex-direction: column;}
+    .bottom-left{width: 100%;}
+    .bottom-right{width: 100%;}
+    .details{padding-top: 2rem;height: 20rem;}
+    .name{padding-top: 0;}
+    .minifut{height: 25rem;flex-direction: column;justify-content: space-evenly;text-align: center;}
+    .info{margin-left: 0;margin-right: 0;}
+    .fot-content{display: none;}
+    .fot{width: 100%;}
+    footer{
+        flex-direction: column;align-items: center;
+    }
+
+     
+}

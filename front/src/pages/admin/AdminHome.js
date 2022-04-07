@@ -12,7 +12,7 @@ function AdminHome() {
    
     return (
         <>
-
+            <section className="admin-home">
             <ul className="cards">
                 <li className="routes">
                     <Link to='/world'>
@@ -34,7 +34,7 @@ function AdminHome() {
                         <img src={users} className="icons" alt="" />
                     </Link>
                 </li>
-            </ul>
+            </ul></section>
 
 
         </>

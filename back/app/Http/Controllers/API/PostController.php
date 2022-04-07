@@ -18,12 +18,27 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function show($id)
+    public function showA($id)
     {
-        $posts = Post::with('comment.user')->where('id', '=', $id)->firstOrFail();
+        $posts = Post::with('user')->where('id', '=', $id)->firstOrFail();
+        $postes = Comment::with('user')->where('post_id', '=', $id)->get();
         return response()->json([
             'status' => 200,
             'posts' => $posts,
+            'postes' => $postes,
+            
+        ]);
+    }
+
+    public function showU($id)
+    {
+        $posts = Post::with('user')->where('id', '=', $id)->firstOrFail();
+        $postes = Comment::with('user')->where('post_id', '=', $id)->get();
+        return response()->json([
+            'status' => 200,
+            'posts' => $posts,
+            'postes' => $postes,
+            
         ]);
     }
 

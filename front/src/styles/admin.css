@@ -1,0 +1,225 @@
+
+.side-icon{
+    width: 6rem;
+    height: 5rem;
+    padding-right: 1rem;
+  }
+  
+  .bot-icon{
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 0.5rem;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+  
+  .navbar{
+    width: 7rem;
+    height: 100vh;
+    position: fixed;
+    background-color: #111111;
+    transition: width 600ms ease;
+    overflow: scroll;
+  }
+  
+  .navbar-nav{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  .nav-item{
+    width: 100%;
+  }
+  
+  .nav-item:last-child{
+    margin-top: auto;
+  }
+  
+  .nav-link{
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    text-decoration: none;
+    color: #fd6A02;
+    filter: grayscale(100%) opacity(0.7);
+    transition: 600ms;
+  }
+  
+  .nav-link:hover{
+    filter: grayscale(0%) opacity(1);
+    background-color: #111111;
+    color: #fd6A02;
+    
+  }
+  
+  .link-text{
+    display: none;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+  }
+  
+  .nav-link svg{
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+  }
+  
+  .navbar:hover{
+    width: 16rem;
+  
+  }
+  
+  .navbar:hover .link-text{
+    display: block;
+  }
+  
+  .fa-primary{color:#F9812A;}
+  .fa-secondary{color:#db5c01;}
+  
+  .fa-primary,
+  .fa-secondary{
+    transition: 600ms;
+  }
+  
+  .logos{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    color: #db5c01;
+    background-color: #111111;
+    width: 100%;
+  }
+  
+  .logo img{
+    transform: rotate(0deg);
+    transition: transform (600ms);
+  }
+  
+  .navbar:hover .logo img{
+    transform: rotate(-180deg);
+    padding-left: 1rem;
+    padding-right: 0;
+  
+  }
+  
+
+  .tables{width: 100%;padding-left: 20rem;padding-right: 20rem;padding-top: 5rem;}
+  #admin-table{font-size: 8rem;}
+  #create{font-size: 2rem;}
+
+  .section .containers{
+    position: relative;
+    width: 60rem;
+    height: 50rem;
+    background: #1e1e1e;
+    box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .section .containers .signupBx .formBx
+{
+  top: 0;
+}
+
+.section .containers .user .formBx
+{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  transition: 0.5s;
+}
+  
+.section .containers .user .formBx h2
+{
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #555;
+}
+.section .containers .user .formBx input
+{
+  width: 100%;
+  padding: 1rem;
+  background: #F5F5F5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 1.4rem;
+  margin: 0.8rem 0;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
+}
+.section .containers .user .formBx input[type="submit"]
+{
+  max-width: 10rem;
+  background: #fd6A02;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+}
+.section .containers .user.signupBx .formBx input[type="submit"]
+{
+  background: #111111;
+}
+.section .containers .user .formBx .signup
+{
+  position: relative;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.section .containers .user .formBx .signup a
+{
+  font-weight: 600;
+  text-decoration: none;
+  color: #111111;
+  font-size: 1.2rem;
+}
+.section .containers.active .user .formBx .signup a
+{
+  font-weight: 600;
+  text-decoration: none;
+  color: #fd6A02;
+  font-size: 1.2rem;
+}
+
+.section .containers.active .signupBx .formBx
+{
+  top: 0;
+}
+
+#section{background: #1e1e1e;}
+
+.create-post-admin{height: 100vh;width: 100%;padding-left: 25rem;}
+/* ADMIN HOME - CHOOSE */
+
+.admin-home{height: 100vh;width: 100%;}
+.cards{display: flex;width: 100%;align-items: center;height: 90%;justify-content: space-evenly;}
+.routes img:hover{height: 30rem;width: 30rem;transition: 600ms ease-in-out;}
+.icons{width: 25rem;height: 25rem;}
+.status-td{text-align: center;}

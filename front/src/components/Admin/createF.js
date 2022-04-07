@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
+import user from '../../media/Illustrations/user-profile.png'
+import media from "../../media/ZoubairIcons/CreatePost/PNG/files.png"
+
 
 function CreateF() {
     const history = useHistory();
@@ -25,15 +28,15 @@ function CreateF() {
             section: postInput.section,
             file: postInput.file,
         }
-        await axios.post('http://127.0.0.1:8000/api/feed/create/post', data).then(res => {
+        await axios.post('http://127.0.0.1:8000/api/admin/feed/create/post', data).then(res => {
 
             if (res.data.status === 200) {
 
                 swal({
-                    title: "Congrats!",
+                    title: "Well Done!",
                     text: "You created the post",
                     icon: "success",
-                    button: "Aww yiss!",
+                    button: "Continue !",
                 });
                 history.push('/feed');
 
@@ -45,37 +48,33 @@ function CreateF() {
 
     return (
         <>
-
-            <form onSubmit={postSubmit}>
-
-                <label>
-                    <p className="label-txt">Post Title</p>
-                    <input type="text" name='post_title' onChange={handleInput} value={postInput.post_title} className="input" />
-                    {/* <span className="text-danger">{this.state.error_list.username}</span> */}
-                    <div className="line-box">
-                        <div className="line"></div>
+           <section className="create-post-admin">
+            <div className='create-container'>
+                <div className="create-post">
+                    <div className="create-header">
+                        <h2 className='create-name'>Create Post</h2>
                     </div>
-                </label>
+                    <div className="create-line"></div>
+                    <div className="user-create">
+                        <img src={user} alt="" className="user-avatar" />
+                        <h2 className="user-create-name">ADMIN</h2>
 
-                <label>
-                    <p className="label-txt">Post Content</p>
-                    <input type="text" name='post_content' onChange={handleInput} value={postInput.post_content} className="input" />
-                    {/* <span className="text-danger">{this.state.error_list.email}</span> */}
-                    <div className="line-box">
-                        <div className="line"></div>
+                        <div className="addfile-container"><img src={media} alt="" className="add-file" /><input type="file" value={postInput.file} onChange={handleInput} size={60} name="file" id="file" /><label for="file"></label></div>
+                    
                     </div>
-                </label>
+                    <form className='create-form' onSubmit={postSubmit}>
+                        <label className='label-title'>
+                            <input type="text" name='post_title' onChange={handleInput} className="input-title" value={postInput.post_title} placeholder='Inser your title here...' />
+                        </label>
+                        <label className='label-content'>
+                            <input type="text" name='post_content' onChange={handleInput} className="input-content" value={postInput.post_content} placeholder="What's on your mind, Lord Admin ? " />
+                        </label>
+                        <button type="submit" className='create-button'>Post</button>
+                    </form>
+                </div>
+            </div>
 
-                <label>
-                        <div class="mb-3">
-                            <label for="formFile" class="label-txt">Want to add a file ?</label>
-                            <input class="form-control" name="file" type="file" id="formFile" onChange={handleInput} value={postInput.file} />
-                        </div>
-                    </label>
-
-                <button type="submit">Create</button>
-
-            </form>
+            </section>
         </>
     )
 }

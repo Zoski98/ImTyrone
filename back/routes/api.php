@@ -13,64 +13,47 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// Route::prefix('admin')->middleware(['auth'])->group(function() {
-
-//     Route::get('dashboard', [UserController::class, 'index']);
-
-// });
-
-//API route for register new user
+//REGISTER & LOGIN
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-
-
-
-
-//EDIT AND SHOW//
-
-
-
-//Protecting Routes
 Route::middleware(['auth:sanctum', 'isAPIAdmin'])->group(function () {
 
     Route::get('/checkAuthenticated', function () {
         return response()->json(['message' => 'You are in', 'status' => 200], 200);
     });
 
+    // USERS
+    Route::get('users', [UserController::class, 'index']);
+
+    // POSTS
     Route::get('world/posts', [WorldController::class, 'index']);
     Route::get('feed/posts', [FeedController::class, 'index']);
     Route::get('community/posts', [CommunityController::class, 'index']);
-
-    Route::post('/community/create/post', [CommunityController::class, 'post']);
-    Route::post('/feed/create/post', [FeedController::class, 'post']);
-    Route::post('/world/create/post', [WorldController::class, 'post']);
-
-
-    Route::delete('delete-post/{id}', [PostController::class, 'destroy']);
-    Route::get('show-post/{id}', [PostController::class, 'show']);
-    Route::post('/comment/{id}', [CommentController::class, 'create']);
-    Route::get('show-comment/{id}', [CommentController::class, 'show']);
-    Route::delete('delete-comment/{id}', [CommentController::class, 'destroy']);
-
     Route::put('approve/{id}', [PostController::class, 'approve']);
 
-
-    Route::get('users', [UserController::class, 'index']);
+    // CREATE 
+    Route::post('/admin/community/create/post', [CommunityController::class, 'post']);
+    Route::post('/admin/feed/create/post', [FeedController::class, 'post']);
+    Route::post('/admin/world/create/post', [WorldController::class, 'post']);
+    Route::post('/admin/comment/{id}', [CommentController::class, 'create']);
     Route::post('create-user', [UserController::class, 'store']);
-    Route::get('edit-user/{id}', [UserController::class, 'edit']);
-    Route::put('update-user/{id}', [UserController::class, 'update']);
+
+    // SHOW
+    Route::get('admin/show/post/{id}', [PostController::class, 'showA']);
+    Route::get('show-comment/{id}', [CommentController::class, 'show']);
+
+    // DELETE
+    Route::delete('admin/delete/post/{id}', [PostController::class, 'destroy']);
+    Route::delete('admin/delete/comment/{id}', [CommentController::class, 'destroy']);
     Route::delete('delete-user/{id}', [UserController::class, 'destroy']);
 
+    // EDIT-UPDATE
+    Route::get('edit-user/{id}', [UserController::class, 'edit']);
+    Route::put('update-user/{id}', [UserController::class, 'update']);
 
-
-
-
-
-
-
+    // LOGOUT
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
@@ -82,34 +65,39 @@ Route::middleware(['auth:sanctum', 'isAPIUser'])->group(function () {
     Route::get('/checkIfAuthenticated', function () {
         return response()->json(['message' => 'You are in', 'status' => 200], 200);
     });
+    // CREATE
+    Route::post('/user/community/create/post', [CommunityController::class, 'post']);
+    Route::post('/user/feed/create/post', [FeedController::class, 'post']);
+    Route::post('/user/world/create/post', [WorldController::class, 'post']);
+    Route::post('/user/comment/{id}', [CommentController::class, 'create']);
 
-    Route::get('world/user/posts', [WorldController::class, 'index']);
-    Route::get('feed/user/posts', [FeedController::class, 'index']);
+    // POSTS
+    Route::get('world/user/posts', [WorldController::class, 'approvedPosts']);
+    Route::get('feed/user/posts', [FeedController::class, 'approvedPosts']);
     Route::get('community/user/posts', [CommunityController::class, 'approvedPosts']);
+
+    Route::get('world/last-posts', [WorldController::class, 'lastpost']);
+    Route::get('feed/last-posts', [FeedController::class, 'lastpost']);
     Route::get('community/last-posts', [CommunityController::class, 'lastpost']);
-    Route::post('/comment/{id}', [CommentController::class, 'create']);
 
+    // USER
     Route::get('current/user', [UserController::class, 'currentuser']);
+    Route::get('user/world/posts', [UserController::class, 'wpost']);
+    Route::get('user/community/posts', [UserController::class, 'cpost']);
+    Route::get('user/feed/posts', [UserController::class, 'fpost']);
 
+    // SHOW
+    Route::get('user/show/post/{id}', [PostController::class, 'showU']);
 
-    // Route::get('world/posts', [WorldController::class, 'index']);
-    // Route::get('feed/posts', [FeedController::class, 'index']);
-    // Route::get('community/posts', [CommunityController::class, 'index']);
+    // DELETE
+    Route::delete('user/delete/post/{id}', [PostController::class, 'destroy']);
+    Route::delete('user/delete/comment/{id}', [CommentController::class, 'destroy']);
 
-    // Route::post('/community/create/post', [CommunityController::class, 'post']);
-    // Route::post('/feed/create/post', [FeedController::class, 'post']);
-    // Route::post('/world/create/post', [WorldController::class, 'post']);
+    // EDIT-UPDATE
+    Route::get('user/edit/{id}', [UserController::class, 'edit']);
+    Route::put('user/update/{id}', [UserController::class, 'update']);
 
-    // Route::post('/comment/{id}', [CommentController::class, 'create']);
-    // Route::delete('delete-post/{id}', [PostController::class, 'destroy']);
-    Route::get('show/user/post/{id}', [PostController::class, 'show']);
-    // Route::get('show-comment/{id}', [CommentController::class, 'show']);
-
-    // Route::delete('delete-comment/{id}', [CommentController::class, 'destroy']);
-
-
-
-
+    // LOGOUT
     Route::post('logout', [AuthController::class, 'logout']);
 });
 

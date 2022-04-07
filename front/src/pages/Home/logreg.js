@@ -2,8 +2,8 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import map1 from "../../media/map3.jpg"
-import com from "../../media/com10.png"
+import com from "../../media/Illustrations/World-bro.svg"
+import map1 from "../../media/Illustrations/Teamwork.svg"
 
 
 function Logreg() {
@@ -46,10 +46,10 @@ function Logreg() {
                 localStorage.setItem('auth_name', res.data.username);
                 localStorage.setItem('auth_token', res.data.token);
                 swal({
-                    title: "Good job!",
-                    text: "You clicked the button!",
+                    title: "Welcome!",
+                    text: "You are now registered!",
                     icon: "success",
-                    button: "Aww yiss!",
+                    button: "Continue...",
                 });
                 history.push('/section');
                 setRegister({

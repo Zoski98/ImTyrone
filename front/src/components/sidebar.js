@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import bulb from '../media/bulb.png';
 import logout from '../media/shutdown.png';
+import '../styles/admin.css'
 
 
 const Sidebar = () => {
@@ -12,7 +13,7 @@ const Sidebar = () => {
         e.preventDefault();
         localStorage.removeItem('auth_name');
         localStorage.removeItem('auth_token');
-        swal("Succes", "hey", "success");
+        swal("You logged out !", "See you soon, sir !", "success");
         history.push("/getin")
     }
 
@@ -23,7 +24,7 @@ const Sidebar = () => {
             <nav className="navbar">
                 <ul className="navbar-nav">
 
-                    <li className="logo">
+                    <li className="logos">
                         <a href="#" className="nav-link">
                             <img src={bulb} alt="yo" className='side-icon' />
                             <span className="link-text">WEBSITE</span>

@@ -25,7 +25,7 @@ class WorldController extends Controller
             'user_id' => auth()->user()->id,
             'post_title' => $request->input('post_title'),
             'post_content' => $request->input('post_content'),
-            'image' => $request->input('file')->store('files'),
+            'image' => $request->input('file'),
             'section' => 1,
         ]);
         $post->save();
@@ -36,5 +36,17 @@ class WorldController extends Controller
             'status' => 200,
             'message' => 'Post added succesfully',
         ]);
+    }
+
+    public function lastpost()
+    {
+        $postes = Post::with('user')->where('section', '=', '1')->where('isApproved', "=", '1')->latest()->limit(5)->get();
+        return response()->json(['status' => 200, 'postes' => $postes,]);
+    }
+
+    public function approvedPosts()
+    {
+        $posts = Post::with('user')->where('section', '=', '1' )->where('isApproved', "=", '1')->get();
+        return response()->json(['status' => 200, 'posts' => $posts,]);
     }
 }

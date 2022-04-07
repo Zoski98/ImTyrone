@@ -39,7 +39,7 @@ class CommunityController extends Controller
 
     public function lastpost()
     {
-        $postes = Post::with('user')->where('section', '=', '2')->latest()->paginate(5);
+        $postes = Post::with('user')->where('section', '=', '2')->where('isApproved', "=", '1')->latest()->limit(5)->get();
         return response()->json(['status' => 200, 'postes' => $postes,]);
     }
 

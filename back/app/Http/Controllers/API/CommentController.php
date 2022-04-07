@@ -39,20 +39,20 @@ class CommentController extends Controller
        $comment->save();
        return response()->json([
         'data' => $comment,
-        'type'=>$comment->user_id->type,
+        // 'type'=>$comment->user_id->type,
         'status' => 200,
         'message' => 'Comment added succesfully', ]);
     
     }
 
-    // public function show($id)
-    // {
-    //     $comments = Comment::all()->where('post_id', '=', $id);
-    //     return response()->json([
-    //         'status' => 200,
-    //         'comments' => $comments,
-    //     ]);
-    // }
+    public function show($id)
+    {
+        $comments = Comment::all()->where('post_id', '=', $id);
+        return response()->json([
+            'status' => 200,
+            'comments' => $comments,
+        ]);
+    }
 
     // public function getComment($id) {
     //     $comments = Comment::query()->where('post_id', $id)->get();

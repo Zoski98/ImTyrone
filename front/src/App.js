@@ -1,30 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import editUser from './pages/EditUser';
+import Home from './pages/Home/Home';
 import AdminPrivateRoute from './AdminPrivateRoute';
 import axios from 'axios';
 import Page403 from './pages/Errors/Page403';
 import Page404 from './pages/Errors/Page404';
-import Users from './pages/admin/Users';
-import Community from './pages/admin/Community';
-import World from './pages/admin/World';
-import Feed from './pages/admin/Feed';
-import Show from './pages/show';
-import Index from './pages/user/index';
 import CreateW from './components/Admin/createW';
 import CreateC from './components/Admin/createC';
 import CreateF from './components/Admin/createF';
-import FeedExampleBasic from './pages/user/feed';
 import UserPrivateRoute from './UserPrivateRoute';
 import Logreg from './pages/Home/logreg';
 import UserHome from './pages/user/section';
 import createU from './components/Admin/createU';
 import AdminHome from './pages/admin/AdminHome';
-import userCommunity from './pages/user/userCommunity';
-import ShowU from './pages/user/showU';
-
+import ShowPost from './pages/user/showPostUser';
+import Chat from './pages/user/chat';
+import Useres from './pages/newAdmin/useres';
+import Worlds from './pages/newAdmin/worlds';
+import ShowAdmin from './pages/newAdmin/showPostAdmin';
+import Communities from './pages/newAdmin/communities';
+import Feeds from './pages/newAdmin/feeds';
+import NewCommunity from './pages/user/NewCommunity';
+import NewWorld from './pages/user/NewWorld';
+import Profile from './pages/user/profile';
+import EditUsers from './components/Admin/ChangeUser';
+import EditUser from './pages/user/EditUser';
 
 
 axios.defaults.baseURL = "http://localhost:8000/";
@@ -44,53 +45,54 @@ axios.interceptors.request.use(function (config) {
 
 
 function App() {
-
   return (
 
     <Router>
       <Switch>
+
         <Route exact path='/'>
           <Home />
         </Route>
+
         <Route path="/getin">
           <Logreg />
         </Route>
 
-        <AdminPrivateRoute path='/admin' component={AdminHome} name="admin"/>
-        <AdminPrivateRoute path="/world" component={World} />
-        <AdminPrivateRoute path="/community" component={Community} />
-        <AdminPrivateRoute path="/feed" name="admin-feed" component={Feed} />
-        <AdminPrivateRoute path="/users" name="admin-user" component={Users} />
+        {/* ADMIN-ROUTES */}
+        <AdminPrivateRoute path='/admin' component={AdminHome} name="admin" />
+
+        <AdminPrivateRoute path="/world" component={Worlds} />
+        <AdminPrivateRoute path="/community" component={Communities} />
+        <AdminPrivateRoute path="/feed" name="admin-feed" component={Feeds} />
+        <AdminPrivateRoute path="/useres" name="admin-user" component={Useres} />
 
         <AdminPrivateRoute path='/create/world/post' component={CreateW} />
         <AdminPrivateRoute path='/create/feed/post' component={CreateF} />
         <AdminPrivateRoute path='/create/community/post' component={CreateC} />
         <AdminPrivateRoute path='/create/user' component={createU} />
 
-        <AdminPrivateRoute path='/show-post/:id' component={Show} />
-        <AdminPrivateRoute path='/edit-user/:id' component={editUser} /> 
-   
-       
-        
+        <AdminPrivateRoute path='admin/show-post/:id' component={ShowAdmin} />
+        <AdminPrivateRoute path='/edit-user/:id' component={EditUsers} />
+        <AdminPrivateRoute path='/delete-user/:id' component={Useres} />
 
 
         {/* USER ROUTES */}
-
-        <Route path='/user/feed'><FeedExampleBasic /></Route>
         <UserPrivateRoute path="/section" name="user" component={UserHome} />
-        <UserPrivateRoute path="/user/community" name="userC" component={userCommunity} />
-        <UserPrivateRoute path="/user/world"/>
-        <UserPrivateRoute path="/user/feed" name="admin-feed"/>
-        <UserPrivateRoute path='/create/world/user/post' component={CreateW} />
-        <UserPrivateRoute path='/create/feed/user/post' component={CreateF} />
-        <UserPrivateRoute path='/create/community/user/post' component={CreateC} />
-        <UserPrivateRoute path='/user/show/post/:id' component={ShowU} />
+        <UserPrivateRoute path="/users/community" name="userC" component={NewCommunity} />
+        <UserPrivateRoute path="/users/world" component={NewWorld} />
+        <UserPrivateRoute path="/users/feed" name="admin-feed" />
+        <UserPrivateRoute path="/users/profile" name="profile" component={Profile} />
+        <UserPrivateRoute path='/show/post/:id' component={ShowPost} />
+        <UserPrivateRoute path='/edit/user/:id' component={EditUser} />
 
-        <Route path='/user/index'><Index /></Route>
         <Route path="/403" component={Page403} />
         <Route path="/404" component={Page404} />
 
+        <Route path='/users/chat'><Chat /></Route>
     
+
+
+
       </Switch>
     </Router>
   );

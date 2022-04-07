@@ -37,4 +37,16 @@ class FeedController extends Controller
             'message' => 'Post added succesfully',
         ]);
     }
+
+    public function lastpost()
+    {
+        $postes = Post::with('user')->where('section', '=', '3')->latest()->limit(5)->get();
+        return response()->json(['status' => 200, 'postes' => $postes,]);
+    }
+    
+    public function approvedPosts()
+    {
+        $posts = Post::with('user')->where('section', '=', '3' )->where('isApproved', "=", '1')->get();
+        return response()->json(['status' => 200, 'posts' => $posts,]);
+    }
 }

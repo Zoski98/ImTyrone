@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Dotenv\Validator;
@@ -58,7 +59,7 @@ class UserController extends Controller
         $users->delete();
         return response()->json([
             'status' => 200,
-            'message' => 'Student Deleted Succesfully',
+            'message' => 'User Deleted Succesfully',
         ]);
     }
 
@@ -107,5 +108,35 @@ class UserController extends Controller
                 'message' => 'User added succesfully',
             ]);
         }
+    }
+
+    public function wpost()
+    {
+        $currentUser = Auth::user();
+        $posts = Post::where('user_id', '=', $currentUser->id)->where('section', '=', '1')->get();
+        return response()->json([
+            'status' => 200,
+            'posts' => $posts
+        ]);
+    }
+
+    public function cpost()
+    {
+        $currentUser = Auth::user();
+        $posts = Post::where('user_id', '=', $currentUser->id)->where('section', '=', '2')->get();
+        return response()->json([
+            'status' => 200,
+            'posts' => $posts
+        ]);
+    }
+
+    public function fpost()
+    {
+        $currentUser = Auth::user();
+        $posts = Post::where('user_id', '=', $currentUser->id)->where('section', '=', '3')->get();
+        return response()->json([
+            'status' => 200,
+            'posts' => $posts
+        ]);
     }
 }
