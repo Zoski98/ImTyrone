@@ -438,6 +438,84 @@ body::-webkit-scrollbar-track{display: none;}
 .light-mode{width: 2rem;height: 2rem;background-color: white;}
 .zoubair{background-color: #EFEFEF;}
 
+/* FEED SECTION */
+
+.feed-container{
+  display: flex;
+  min-height: 100vh;
+  width: auto;
+  margin-left: 12rem;
+}
+
+.feed-content{
+  min-height: 100vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-story{
+  width: 100%;
+  height: 15%;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.feed-content-bar{
+  width: 95%;
+  height: 0.1rem;
+  background-color: white;
+}
+.user-story{display: flex;flex-direction: column;align-items: center;text-align: center;width: 10rem;height: auto;}
+.user-story img{width: 5rem;height: 5rem;border-radius: 2.5rem;}
+.user-story h2{color: white;}
+
+.feed-bar{
+  height: 95vh;
+  margin-top: 3rem;
+  width: 0.1rem;
+  background-color: white;
+}
+
+.feed-right{
+  width: 20%;
+  height: 100vh;
+}
+
+.feed-content-selection{
+  width: 100%;
+  height: 10%;
+  display:flex;
+  color: white;
+  align-items: center;
+}
+.feed-title{font-size: 3rem;margin-right: 75rem;}
+.feed-titles{margin-right: 1rem;font-size: 1.5rem;}
+
+.feed-content-posts{
+  height: 100%;
+  width: 100%;
+  color: white;
+
+}
+
+.feed-image{width: 20rem;height: 20rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width:528px){
   .sidebar{

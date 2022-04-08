@@ -26,6 +26,7 @@ import NewWorld from './pages/user/NewWorld';
 import Profile from './pages/user/profile';
 import EditUsers from './components/Admin/ChangeUser';
 import EditUser from './pages/user/EditUser';
+import Feed from './pages/user/Newfeed';
 
 
 axios.defaults.baseURL = "http://localhost:8000/";
@@ -89,7 +90,7 @@ function App() {
         <Route path="/404" component={Page404} />
 
         <Route path='/users/chat'><Chat /></Route>
-    
+        <Route path='/feeds'><Feed/></Route>
 
 
 
