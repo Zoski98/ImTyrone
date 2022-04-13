@@ -463,24 +463,29 @@ body::-webkit-scrollbar-track{display: none;}
 }
 
 .feed-content-bar{
-  width: 95%;
-  height: 0.1rem;
-  background-color: white;
+  width: 100%;
+  height: 0.5rem;
+  background-color: gray;
+  margin-bottom: 2rem;
 }
 .user-story{display: flex;flex-direction: column;align-items: center;text-align: center;width: 10rem;height: auto;}
-.user-story img{width: 5rem;height: 5rem;border-radius: 2.5rem;}
+.user-story img{width: 5rem;height: 5rem;border-radius: 2.5rem;border: #ef820D solid;}
 .user-story h2{color: white;}
 
 .feed-bar{
-  height: 95vh;
+  min-height: 95vh;
   margin-top: 3rem;
   width: 0.1rem;
-  background-color: white;
+  background-color: grey;
+  margin-left: 2rem;
 }
 
 .feed-right{
   width: 20%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
 }
 
 .feed-content-selection{
@@ -489,23 +494,45 @@ body::-webkit-scrollbar-track{display: none;}
   display:flex;
   color: white;
   align-items: center;
+  padding-top: 2rem;
 }
 .feed-title{font-size: 3rem;margin-right: 75rem;}
 .feed-titles{margin-right: 1rem;font-size: 1.5rem;}
+.feed-titeles{margin-right: 1rem;font-size: 1.5rem;color: #ef820D;font-weight: bold;}
 
 .feed-content-posts{
   height: 100%;
   width: 100%;
   color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+  
 
 }
 
-.feed-image{width: 20rem;height: 20rem;}
+.feed-post{height: 30rem;display: flex;flex-direction: column;align-items: center;justify-content: space-around;}
 
+.feed-post-user{display: flex;width: 100%;align-items: center;justify-content: space-evenly;}
 
+.feed-image{width: 35rem;height: 20rem;border-radius: 2rem;border: solid white 0.2rem;}
+.user-feed-profile{width: 4rem;height: 4rem;}
+.users-name-feed{padding-left: 2rem;margin-right: 4rem;}
+.feed-likes{margin-right: 0.5rem;width: 2rem;margin-left: 2rem;}
+ .feed-post-user h2{margin-bottom: 0;}
 
-
-
+.feed-search{width: 100%;height: 10%;display: flex;padding-top: 1rem;padding-left: 1rem;}
+.feed-suggestions{width: 100%;height: 50%;}
+.feed-right-bar{width: 95%;height: 0.2rem; background:grey;}
+.feed-users-suggested{width: 100%;height: 35%;}
+.upload-icons{padding-left: 1rem; margin-left: 0.5rem; width: 6rem;height: 6rem;background-color: #ef820d;border-radius: 3rem;padding-top: 1.5rem;}
+.suggested{text-align: center;margin-top: 1rem;}
+.user-suggested{margin-top: 1rem; display: flex;height: 15%;justify-content: space-around;align-items: center;}
+.username-email h2 h3{font-size: 1.5rem;}
+.user-suggested h2{font-size: 1.5rem;}
+.suggest-but{width: 7rem;height: 2rem;background-color: #ef820D;text-align: center;border-radius: 3rem;}
 
 
 

@@ -11,24 +11,7 @@ import profile from '../media/ZoubairIcons/Sidebar/White/PNG/Group-35119.png'
 
 
 const Sidebars = () => {
-    // container.classList.toggle('create-post-active');
-
-    // button.classList.remove('side-active');
-    const light = () => {
-        let zoubair = document.getElementById('zoubair');
-        let se = document.querySelector('.serious-post-content');
-        zoubair.classList.toggle('zoubair');
-        se.classList.add('zoubair');
-
-
-    }
-
-    const dark = () => {
-        let zoubair = document.getElementById('zoubair');
-        zoubair.classList.remove('zoubair');
-
-
-    }
+    
 
     const history = useHistory();
     const logoutSubmit = (e) => {
@@ -93,10 +76,7 @@ const Sidebars = () => {
                         <span className="link-text">Log Out</span>
                     </a>
                 </div>
-                <div className="mode">
-                    <div className="dark-mode" onClick={dark}></div>
-                    <div className="light-mode" onClick={light}></div>
-                </div>
+            
 
             </nav>
 
