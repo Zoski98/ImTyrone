@@ -28,7 +28,7 @@ function Feeds() {
             console.log(res.data.message);
         }
         approvedPost.innerText = "Approved"
-        history.push("world");
+        history.push("feed");
 
     }
 
@@ -78,7 +78,7 @@ function Feeds() {
                                     <td className="status-td">{item.isApproved}</td>
 
                                     <td>
-                                        <Link to={`show-post/${item.id}`} id="create" className="btn btn-success btn-sm">Show</Link>
+                                        <Link to={`/show-post/${item.id}`} id="create" className="btn btn-success btn-sm">Show</Link>
                                     </td>
                                     <td>
                                         <button type='button' id="create" onClick={(e) => approvePost(e, item.id)} className='btn btn-info btn-sm approved'>Approve</button>

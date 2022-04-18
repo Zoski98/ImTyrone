@@ -27,7 +27,7 @@ function NewWorld() {
   const [createInput, setCreate] = useState({
     post_title: "",
     post_content: "",
-    file: "",
+    image: "",
   });
 
   const createOn = () => {
@@ -82,15 +82,22 @@ function NewWorld() {
   const handleInput = (e) => {
     setCreate({ ...createInput, [e.target.name]: e.target.value });
   }
+  const [imagedata, setImagedata] = useState("");
+
+  const handleImage = (file) => {
+    setImagedata(file[0]);
+};
+
 
   const createPost = async (e) => {
     e.preventDefault();
 
-    const data = {
-      post_title: createInput.post_title,
-      post_content: createInput.post_content,
-      file: createInput.file,
-    }
+    const data = new FormData();
+    data.append("image", imagedata);
+    data.append("post_title", createInput.post_title);
+    data.append("post_content", createInput.post_content);
+ 
+   
     await axios.post('http://127.0.0.1:8000/api/user/world/create/post', data).then(res => {
 
       if (res.data.status === 200) {
@@ -98,7 +105,7 @@ function NewWorld() {
         setCreate({
           post_title: '',
           post_content: '',
-          file: '',
+          image: '',
         });
       } history.push('/users/world');
     });
@@ -123,10 +130,10 @@ function NewWorld() {
             </div>
             <div className="create-line"></div>
             <div className="user-create">
-              <img src={profile} alt="" className="user-avatar" />
+              <img src={`http://127.0.0.1:8000/${user.file}`} alt="" className="user-avatar" />
               <h2 className="user-create-name">{user.username}</h2>
 
-              <div className="addfile-container"><img src={media} alt="" className="add-file" /><input type="file" size={60} name="file" id="file" onChange={handleInput} value={createInput.file} /><label for="file"></label></div>
+              <div className="addfile-container"><img src={media} alt="" className="add-file" /><input type="file" size={60} name="image" id="file" onChange={e => handleImage(e.target.files)} /><label for="file"></label></div>
 
             </div>
             <form className='create-form' onSubmit={createPost}>
@@ -178,7 +185,7 @@ function NewWorld() {
               return (
                 <div class="serious-post-left" key={postes.id}>
                   <div class="serious-post-user">
-                    <img src={userprofile} class="user-profile" alt="USER-PROFILE" />
+                    <img src={`http://127.0.0.1:8000/${postes.user.file}`} class="user-profile" alt="USER-PROFILE" />
                     <h2>{postes.user.username}</h2>
                   </div>
                   <div class="serious-post-content">
@@ -245,7 +252,7 @@ function NewWorld() {
           <div class="serious-bot-right">
             <div class="serious-bot-right-bar"></div>
             <div class="serious-bot-right-posts">
-              <div class="right-posts">
+              <div class="right-posts" id="right">
                 <div class="right-posts-categories">
                   <h2 class="post-category">Latest Posts</h2>
                 </div>
@@ -254,7 +261,7 @@ function NewWorld() {
                     return ( 
                       <div class="right-post" key={posts.id}>
                         <div class="right-post-user">
-                          {/* <img src="/Components/user-profile.png" class="users-profile" alt="USER-PROFILE" /> */}
+                          <img src={`http://127.0.0.1:8000/${posts.user.file}`} class="users-profile" alt="USER-PROFILE" />
                           <h2 className="username-last">{posts.user.username}</h2>
                         </div>
                         <div class="right-post-title">

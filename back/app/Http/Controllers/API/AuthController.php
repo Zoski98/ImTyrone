@@ -28,11 +28,18 @@ class AuthController extends Controller
         }
         else
         {
-              $user = new User;
+            $user = new User;
             $user->username = $request->input('username');
             $user->email = $request->input('email');
             $user->password =bcrypt($request->input('password'));
-            $user->file = $request->input('file');
+            if($request->hasFile('image'))
+            {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() .'.'.$extension;
+                $file->move(public_path('uploads/images/'), $filename);
+                $user->file = 'uploads/images/'.$filename;
+            }
             $user->save();
 
 

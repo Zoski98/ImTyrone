@@ -35,6 +35,25 @@ class UserController extends Controller
         ]);
     }
 
+    public function stories()
+    {
+        $users = User::all()->random(10);
+        return response()->json([
+            'status' => 200,
+            'users' => $users,
+        ]);
+    }
+
+    public function suggested()
+    {
+        $users = User::all()->random(5);
+        return response()->json([
+            'status' => 200,
+            'users' => $users,
+        ]);
+    }
+
+
     public function currentuser()
     {
         $user = auth()->user();
@@ -95,12 +114,18 @@ class UserController extends Controller
             
         }
         else {
-
             $user = new User;
             $user->username = $request->input('username');
             $user->email = $request->input('email');
             $user->password = $request->input('password');
-            $user->file = $request->input('file')->store('avatars');
+            if($request->hasFile('file'))
+            {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() .'.'.$extension;
+                $file->move(public_path('uploads/images/'), $filename);
+                $user->file = 'uploads/images/'.$filename;
+            }
             $user->save();
 
             return response()->json([

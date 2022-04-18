@@ -50,11 +50,11 @@ function EditUser() {
                 document.getElementById('update').innerText = "Update ";
                 swal({
                     title: "Well Done!",
-                    text: "You edited an User!",
+                    text: "You edited your Profile!",
                     icon: "success",
                     button: "Continue...",
                 });
-                history.push("/show/profile");
+                history.push("/users/profile");
 
 
 

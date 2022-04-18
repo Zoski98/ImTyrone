@@ -73,7 +73,7 @@ function Profile() {
             <section className="profile-container">
                 <div className="left-profile">
                     <div className="profile-details">
-                        <img src={userprofile} alt="" />
+                        <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
                         <Link className="edit-profile" to={`/edit/user/${user.id}`} ><a href="" className="edit-profile">Edit Profile</a></Link>
                         <h2 className="q">Username</h2>
                         <h2 className="a">{user.username}</h2>
@@ -94,8 +94,9 @@ function Profile() {
                             {world.map((world) => {
                                 return (
                                     <div className="user-posts" key={world.id}>
-                                        <h2 className="user-title">{world.post_title}</h2>
-                                        <img src={map} alt="" className="map" />
+                                        <Link to={`/show/post/${world.id}`}><h2 className="user-title">{world.post_title}</h2></Link>
+                                        
+                                        <img src={`http://127.0.0.1:8000/${world.image}`} alt="" className="map" />
                                         <div className="show-detailes">
                                             <div className="icon-containers" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="23.732" height="22.819" viewBox="0 0 23.732 22.819">

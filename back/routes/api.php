@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\FeedController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\Api\WorldController;
+use App\Http\Controllers\Api\ChatController;
+use App\Models\Chat;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -70,6 +72,7 @@ Route::middleware(['auth:sanctum', 'isAPIUser'])->group(function () {
     Route::post('/user/feed/create/post', [FeedController::class, 'post']);
     Route::post('/user/world/create/post', [WorldController::class, 'post']);
     Route::post('/user/comment/{id}', [CommentController::class, 'create']);
+    Route::post('/user/chat/{id}', [ChatController::class, 'chat']);
 
     // POSTS
     Route::get('world/user/posts', [WorldController::class, 'approvedPosts']);
@@ -82,12 +85,16 @@ Route::middleware(['auth:sanctum', 'isAPIUser'])->group(function () {
 
     // USER
     Route::get('current/user', [UserController::class, 'currentuser']);
+    Route::get('user/stories', [UserController::class, 'stories']);
+    Route::get('user/suggested', [UserController::class, 'suggested']);
     Route::get('user/world/posts', [UserController::class, 'wpost']);
     Route::get('user/community/posts', [UserController::class, 'cpost']);
     Route::get('user/feed/posts', [UserController::class, 'fpost']);
-
-    // SHOW
+    Route::post('user/message/{id}', [ChatController::class, 'chat']);
+    Route::get('user/chat', [ChatController::class, 'index']);
+    // SHOWF
     Route::get('user/show/post/{id}', [PostController::class, 'showU']);
+    Route::get('user/messages/{id}', [ChatController::class, 'messages']);
 
     // DELETE
     Route::delete('user/delete/post/{id}', [PostController::class, 'destroy']);

@@ -59,7 +59,8 @@ function ShowPost() {
                 setCreate({
                     reply_content: '',
                     file: '',
-                  });
+                });
+                history.push(`/show/post/${post_id}`)
 
 
 
@@ -72,14 +73,18 @@ function ShowPost() {
 
     useEffect(() => {
         async function test() {
-            
+
             const res = await axios.get(`http://127.0.0.1:8000/api/user/show/post/${post_id}`);
             if (res.data.status === 200) {
                 setState({
                     posts: res.data.posts,
                     postes: res.data.postes,
+                    created_at:res.data.posts.created_at,
+                    file: res.data.posts.user.file,
+                    image: res.data.posts.image,
                     username: res.data.posts.user.username,
                     post_title: res.data.posts.post_title,
+
                     post_content: res.data.posts.post_content,
                     usernames: res.data.posts.user.username,
                     reply_content: res.data.postes.reply_content,
@@ -100,16 +105,16 @@ function ShowPost() {
                 <div className="show-container">
 
                     <div className="show-header">
-                        <img src={userprofile} alt="" className="show-img" />
+                        <img src={`http://127.0.0.1:8000/${state.file}`} alt="" className="show-img" />
                         <h2 className="show-username">{state.username}</h2>
                         <h2 className="show-time">{moment(state.created_at).fromNow()}</h2>
-                        <a href="/user/community" className="show-return"><img src={returns} alt="" className="show-return" /></a>
+                        <a href="/users/community" className="show-return"><img src={returns} alt="" className="show-return" /></a>
                     </div>
 
                     <div className="show-post">
                         <h2 className="show-post-title">{state.post_title}</h2>
                         <h2 className="show-post-content">{state.post_content}</h2>
-                        <img src={map} alt="" className="show-post-img" />
+                        <img src={`http://127.0.0.1:8000/${state.image}`} alt="" className="show-post-img" />
                     </div>
 
                     <div className="show-details">
@@ -142,57 +147,57 @@ function ShowPost() {
 
                         <div className="kenza">
                             <form onSubmit={createComment}>
-                            <button><img src={send} alt="" className="comments-send" /></button>
-                            <label>
-                                <input type="hidden" name="post_id" value={createInput.post_id} />
-                            </label>
-                            <input type="text" id="" className="add-comments" placeholder="Add a public comment" name='reply_content' onChange={handleInput} value={createInput.reply_content} />
-                        </form>
+                                <button><img src={send} alt="" className="comments-send" /></button>
+                                <label>
+                                    <input type="hidden" name="post_id" value={createInput.post_id} />
+                                </label>
+                                <input type="text" id="" className="add-comments" placeholder="Add a public comment" name='reply_content' onChange={handleInput} value={createInput.reply_content} />
+                            </form>
+                        </div>
+
+
                     </div>
+                    {comment.map((item) => {
+                        return (
+                            <div className="show-comments-container" key={item.id} >
+                                <div className="show-user-img">
+                                    <img src={`http://127.0.0.1:8000/${item.user.file}`} alt="" className="comment-user-img" />
+                                </div>
+                                <div className="show-user-name">
+                                    <h2 className="user-name-comment">{item.user.username}</h2>
+                                    <h2 className="comment-time">{moment(item.created_at).fromNow()}</h2>
+                                </div>
+                                <div className="show-comment-container">
+                                    <div className="show-comment-content">
+                                        <h2 className="comment-content">{item.reply_content}</h2>
+                                    </div>
+                                    <div className="comment-details">
+                                        <svg xmlns="http://www.w3.org/2000/svg" id="heart-svg" width="23.732" height="22.819" viewBox="0 0 23.732 22.819">
+                                            <path id="Icon_ionic-ios-heart" data-name="Icon ionic-ios-heart" d="M20.718,3.938h-.057A6.491,6.491,0,0,0,15.241,6.9a6.491,6.491,0,0,0-5.42-2.967H9.764a6.45,6.45,0,0,0-6.389,6.447A13.887,13.887,0,0,0,6.1,17.954a47.788,47.788,0,0,0,9.139,8.8,47.788,47.788,0,0,0,9.139-8.8,13.887,13.887,0,0,0,2.727-7.57A6.45,6.45,0,0,0,20.718,3.938Z" transform="translate(-3.375 -3.938)" fill="#ef820D" />
+                                        </svg>
+                                        <h2 className="number-likes">64 Likes</h2>
+                                        <h2 className="comment-reply">Reply</h2>
+                                    </div>
+                                </div>
+                                <div className="comment-type">
+                                    <h2 className="type-comment">Basic</h2>
+                                </div>
+                            </div>
+                        )
+                    })}
+
+
+
+
+
 
 
                 </div>
-                {comment.map((item) => {
-                    return (
-                        <div className="show-comments-container" key={item.id} >
-                            <div className="show-user-img">
-                                <img src={userprofile} alt="" className="comment-user-img" />
-                            </div>
-                            <div className="show-user-name">
-                                <h2 className="user-name-comment">{item.user.username}</h2>
-                                <h2 className="comment-time">{moment(item.created_at).fromNow()}</h2>
-                            </div>
-                            <div className="show-comment-container">
-                                <div className="show-comment-content">
-                                    <h2 className="comment-content">{item.reply_content}</h2>
-                                </div>
-                                <div className="comment-details">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="heart-svg" width="23.732" height="22.819" viewBox="0 0 23.732 22.819">
-                                        <path id="Icon_ionic-ios-heart" data-name="Icon ionic-ios-heart" d="M20.718,3.938h-.057A6.491,6.491,0,0,0,15.241,6.9a6.491,6.491,0,0,0-5.42-2.967H9.764a6.45,6.45,0,0,0-6.389,6.447A13.887,13.887,0,0,0,6.1,17.954a47.788,47.788,0,0,0,9.139,8.8,47.788,47.788,0,0,0,9.139-8.8,13.887,13.887,0,0,0,2.727-7.57A6.45,6.45,0,0,0,20.718,3.938Z" transform="translate(-3.375 -3.938)" fill="#ef820D" />
-                                    </svg>
-                                    <h2 className="number-likes">64 Likes</h2>
-                                    <h2 className="comment-reply">Reply</h2>
-                                </div>
-                            </div>
-                            <div className="comment-type">
-                                <h2 className="type-comment">Basic</h2>
-                            </div>
-                        </div>
-                    )
-                })}
 
-
-
-
-
-
-
-            </div>
-
-            <div className="show-right">
-                <div className="show-right-bar"></div>
-            </div>
-        </section>
+                <div className="show-right">
+                    <div className="show-right-bar"></div>
+                </div>
+            </section>
         </>
     )
 

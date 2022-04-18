@@ -8,14 +8,7 @@ import map1 from "../../media/Illustrations/Teamwork.svg"
 
 function Logreg() {
     const history = useHistory();
-    const [registerInput, setRegister] = useState({
-        username: "",
-        email: "",
-        password: "",
-        confirmed: "",
-        file: "",
-        error_list:[],
-    });
+  
 
     const toggleForm = () => {
         let container = document.getElementById('container');
@@ -24,21 +17,34 @@ function Logreg() {
         section.classList.toggle('active');
     }
 
+    const [registerInput, setRegister] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmed: "",
+        error_list: [],
+    });
 
     const handleInput = (e) => {
         setRegister({ ...registerInput, [e.target.name]: e.target.value });
     }
+    const [imagedata, setImagedata] = useState("");
+
+    const handleImage = (file) => {
+        setImagedata(file[0]);
+    };
+
 
     const registerSubmit = async (e) => {
         e.preventDefault();
 
-        const data = {
-            username: registerInput.username,
-            email: registerInput.email,
-            password: registerInput.password,
-            confirmed: registerInput.confirmed,
-            file: registerInput.file,
-        }
+        const data = new FormData();
+        data.append("image", imagedata);
+        data.append("username", registerInput.username);
+        data.append("email", registerInput.email);
+        data.append("password", registerInput.password);
+        data.append("confirmed", registerInput.confirmed);
+        
         await axios.post('http://127.0.0.1:8000/api/register', data).then(res => {
 
             if (res.data.status === 200) {
@@ -73,7 +79,7 @@ function Logreg() {
         email: '',
         password: '',
         error_list: [],
-        
+
     });
 
     const handleInputs = (e) => {
@@ -150,7 +156,7 @@ function Logreg() {
                                 <span className="text-danger">{registerInput.error_list.password}</span>
                                 <input type="password" placeholder="Confirm Password" name='confirmed' onChange={handleInput} value={registerInput.confirmed} />
                                 <span className="text-danger">{registerInput.error_list.confirmed}</span>
-                                <input type="file" name='file' onChange={handleInput} value={registerInput.file} />
+                                <input type="file" name='image' id='image' onChange={e => handleImage(e.target.files)} />
                                 <input type="submit" value="Sign up" />
                                 <p class="signup">Already have an account? <a href="#" onClick={toggleForm}>Sign in.</a></p>
                             </form>

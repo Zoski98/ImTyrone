@@ -21,13 +21,18 @@ class WorldController extends Controller
     }
     public function post(Request $request)
     {
-        $post = new Post([
-            'user_id' => auth()->user()->id,
-            'post_title' => $request->input('post_title'),
-            'post_content' => $request->input('post_content'),
-            'image' => $request->input('file'),
-            'section' => 1,
-        ]);
+        $post = new Post;
+        $post->user_id = auth()->user()->id;
+        $post->post_title = $request->input('post_title');
+        $post->post_content = $request->input('post_content');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads/images/'), $filename);
+            $post->image = 'uploads/images/' . $filename;
+        }
+        $post->section = 1;
         $post->save();
 
         return response()->json([
@@ -46,7 +51,7 @@ class WorldController extends Controller
 
     public function approvedPosts()
     {
-        $posts = Post::with('user')->where('section', '=', '1' )->where('isApproved', "=", '1')->get();
+        $posts = Post::with('user')->where('section', '=', '1')->where('isApproved', "=", '1')->get();
         return response()->json(['status' => 200, 'posts' => $posts,]);
     }
 }

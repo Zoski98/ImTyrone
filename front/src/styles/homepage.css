@@ -3,7 +3,7 @@ body{
     min-height: 100vh;
 }
 /* HEAD PAGE */
-.logo{width: 25rem;height: 5rem;}
+.logo{width:35rem;height: 35rem;position: absolute;margin-right: 77%;margin-top: 7%;}
 .nav-in{color: white;
     font-size: 1.5rem;
     text-align: center;
@@ -15,7 +15,7 @@ body{
     
 }
 .top{display: flex;flex-direction: column;color: white; min-height: 100vh;background-color: #1e1e1e;width: 100%;}
-.nav{height: 10rem;margin-left: 5rem; margin-right: 5rem; display: flex;justify-content: space-between;align-items: center;}
+.nav{height: 10rem;margin-left: 5rem; margin-right: 5rem; display: flex;justify-content: end;align-items: center;}
 .top-title{font-size: 9rem;}
 .top-reg{color: white;}
 .top-content{display: flex;margin-top: 2.5rem;}
@@ -23,10 +23,10 @@ body{
 #getin{font-size: 2rem;border: 1px solid #ef820d;}
 #getin:hover{background-color: #ef820d;}
 
-.top-left{display: flex;flex-direction: column;width: 50%;padding-left: 5rem;height: 45rem;margin-top: 8rem;}
+.top-left{display: flex;flex-direction: column;width: 50%;padding-left: 5rem;height: auto;margin-top: 8rem;}
 .title{font-size: 10rem;color: #fd6A02;}
 .top-text{margin-top: 3.5rem;margin-bottom: 3.5rem;width: 45rem;}
-.top-right{width: 50%;}
+.top-right{width: 50%;height: auto;}
 .earth{width: 40rem;height: 40rem;}
 
 /* MIDDLE PAGE */
@@ -68,8 +68,8 @@ body{
 .minifut-left{width: 40%;margin-left: 8rem;}
 .minifut-right{width: 60%;display: flex;justify-content: space-around;flex-direction: column;margin-left: 20rem;margin-right: 5rem;}
 .faqs-img{height: 55rem;width: 55rem;}
-.faqs-questions{border: 0.2rem solid grey;height: 10rem;display: flex;justify-content: space-around;padding-top: 4rem;border-radius: 1rem;}
-.faqs-question{font-weight: 900;font-size: 2rem;}
+.faqs-questions{border: 0.2rem solid grey;height: 10rem;display: flex;justify-content: space-evenly;padding-top: 4rem;border-radius: 1rem;}
+.faqs-question{font-weight: 900;font-size: 1.75rem;}
 
 
 /* Newsletter page */

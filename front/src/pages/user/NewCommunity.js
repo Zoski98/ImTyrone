@@ -85,14 +85,21 @@ function NewCommunity() {
     user()
   }, [])
 
+  const [imagedata, setImagedata] = useState("");
+
+  const handleImage = (file) => {
+    setImagedata(file[0]);
+};
+
   const createPost = async (e) => {
     e.preventDefault();
 
-    const data = {
-      post_title: createInput.post_title,
-      post_content: createInput.post_content,
-      file: createInput.file,
-    }
+    const data = new FormData();
+    data.append("image", imagedata);
+    data.append("post_title", createInput.post_title);
+    data.append("post_content", createInput.post_content);
+ 
+   
     await axios.post('http://127.0.0.1:8000/api/user/community/create/post', data).then(res => {
 
       if (res.data.status === 200) {
@@ -133,10 +140,10 @@ function NewCommunity() {
             </div>
             <div className="create-line"></div>
             <div className="user-create">
-              <img src={users} alt="" className="user-avatar" />
+              <img src={`http://127.0.0.1:8000/${user.file}`} alt="" className="user-avatar" />
               <h2 className="user-create-name">{user.username}</h2>
 
-              <div className="addfile-container"><img src={media} alt="" className="add-file" /><input type="file" size={60} name="file" id="file" onChange={handleInput} value={createInput.file} /><label for="file"></label></div>
+              <div className="addfile-container"><img src={media} alt="" className="add-file" /><input type="file" size={60} name="image" id="file" onChange={e => handleImage(e.target.files)} /><label for="file"></label></div>
 
             </div>
             <form className='create-form' onSubmit={createPost}>
@@ -188,7 +195,7 @@ function NewCommunity() {
               return (
                 <div class="serious-post-left" key={postes.id}>
                   <div class="serious-post-user">
-                    <img src={userprofile} class="user-profile" alt="USER-PROFILE" />
+                    <img src={`http://127.0.0.1:8000/${postes.user.file}`} class="user-profile" alt="USER-PROFILE" />
                     <h2>{postes.user.username}</h2>
                   </div>
                   <div class="serious-post-content" id="1">
@@ -264,7 +271,7 @@ function NewCommunity() {
                     return ( 
                       <div class="right-post" key={posts.id}>
                         <div class="right-post-user">
-                          {/* <img src="/Components/user-profile.png" class="users-profile" alt="USER-PROFILE" /> */}
+                          <img src={`http://127.0.0.1:8000/${posts.user.file}`} class="users-profile" alt="USER-PROFILE" />
                           <h2 className="username-last">{posts.user.username}</h2>
                         </div>
                         <div class="right-post-title">

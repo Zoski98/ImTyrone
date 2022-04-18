@@ -11,9 +11,13 @@ function CreateC() {
     const [postInput, setPost] = useState({
         post_title: "",
         post_content: "",
-        file: "",
         section: "1",
     });
+    const [imagedata, setImagedata] = useState("");
+
+    const handleImage = (file) => {
+      setImagedata(file[0]);
+  };
 
     const handleInput = (e) => {
         setPost({ ...postInput, [e.target.name]: e.target.value });
@@ -22,12 +26,11 @@ function CreateC() {
     const postSubmit = async (e) => {
         e.preventDefault();
 
-        const data = {
-            post_title: postInput.post_title,
-            post_content: postInput.post_content,
-            section: postInput.section,
-            file: postInput.file,
-        }
+        const data = new FormData();
+        data.append("image", imagedata);
+        data.append("post_title", postInput.post_title);
+        data.append("post_content", postInput.post_content);
+     
         await axios.post('http://127.0.0.1:8000/api/admin/community/create/post', data).then(res => {
 
             if (res.data.status === 200) {
@@ -59,7 +62,7 @@ function CreateC() {
                         <img src={user} alt="" className="user-avatar" />
                         <h2 className="user-create-name">ADMIN</h2>
 
-                        <div className="addfile-container"><img src={media} alt="" className="add-file" /><input type="file" value={postInput.file} onChange={handleInput} size={60} name="file" id="file" /><label for="file"></label></div>
+                        <div className="addfile-container"><img src={media} alt="" className="add-file" /><input type="file" size={60} name="image" id="file" onChange={e => handleImage(e.target.files)} /><label for="file"></label></div>
                     
                     </div>
                     <form className='create-form' onSubmit={postSubmit}>

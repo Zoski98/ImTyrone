@@ -3,12 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import world from '../media/ZoubairIcons/Sidebar/White/PNG/Group-35170.png'
 import community from '../media/ZoubairIcons/Sidebar/White/PNG/Group-35171.png'
-import feed from '../media/ZoubairIcons/Sidebar/White/PNG/Group-35170.png'
 import chat from '../media/ZoubairIcons/Sidebar/White/PNG/Group-35118.png'
 import logout from '../media/shutdown.png';
-
+import logo from '../media/ZoubairIcons/logo2.png'
 import profile from '../media/ZoubairIcons/Sidebar/White/PNG/Group-35119.png'
-
+import feed from '../media/ZoubairIcons/feeds.png'
 
 const Sidebars = () => {
     
@@ -29,7 +28,7 @@ const Sidebars = () => {
 
             <nav class="sidebar" id="side-active" >
                 <div class="side-logo">
-                    <h2>LOGO</h2>
+                    <img src={logo} alt="" className='logo2' />
                 </div>
                 <div class="side-icons">
                     <Link to='/users/world' className="linkto" >
@@ -48,11 +47,11 @@ const Sidebars = () => {
                     <Link to='/users/feed' className="linkto" >
 
                         <div class="side-icon">
-                            <img src={feed} alt="" className='side-img' />
+                            <img src={feed} alt="" id='feed-ico' className='side-img' />
 
                             <h2 class="side-txt">FEED</h2>
                         </div></Link>
-                    <Link to='/users/chat' className="linkto" >
+                    <Link to='/chat' className="linkto" >
 
                         <div class="side-icon">
                             <img src={chat} alt="" className='side-img' />

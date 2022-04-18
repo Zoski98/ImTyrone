@@ -27,13 +27,15 @@ import Profile from './pages/user/profile';
 import EditUsers from './components/Admin/ChangeUser';
 import EditUser from './pages/user/EditUser';
 import Feed from './pages/user/Newfeed';
+import ChatUser from './pages/user/chatUser';
 
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Accept'] = 'application/json';
-
+axios.defaults.headers.post['Accept'] = 'multipart/form-data';
 axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(function (config) {
@@ -72,7 +74,7 @@ function App() {
         <AdminPrivateRoute path='/create/community/post' component={CreateC} />
         <AdminPrivateRoute path='/create/user' component={createU} />
 
-        <AdminPrivateRoute path='admin/show-post/:id' component={ShowAdmin} />
+        <AdminPrivateRoute path='/show-post/:id' component={ShowAdmin} />
         <AdminPrivateRoute path='/edit-user/:id' component={EditUsers} />
         <AdminPrivateRoute path='/delete-user/:id' component={Useres} />
 
@@ -81,16 +83,18 @@ function App() {
         <UserPrivateRoute path="/section" name="user" component={UserHome} />
         <UserPrivateRoute path="/users/community" name="userC" component={NewCommunity} />
         <UserPrivateRoute path="/users/world" component={NewWorld} />
-        <UserPrivateRoute path="/users/feed" name="admin-feed" />
+        <UserPrivateRoute path="/users/feed" name="admin-feed" component={Feed} />
         <UserPrivateRoute path="/users/profile" name="profile" component={Profile} />
         <UserPrivateRoute path='/show/post/:id' component={ShowPost} />
         <UserPrivateRoute path='/edit/user/:id' component={EditUser} />
+        <UserPrivateRoute path='/chat' component={Chat}/>
+        <UserPrivateRoute path='/users/:id' component={ChatUser}/>
+        <UserPrivateRoute path='/:id' component={ChatUser}/>
 
         <Route path="/403" component={Page403} />
         <Route path="/404" component={Page404} />
 
-        <Route path='/users/chat'><Chat /></Route>
-        <Route path='/feeds'><Feed/></Route>
+       
 
 
 

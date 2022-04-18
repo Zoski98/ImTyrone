@@ -28,7 +28,7 @@ function Communities() {
             console.log(res.data.message);
         }
         approvedPost.innerText = "Approved"
-        history.push("world");
+        history.push("/community");
 
     }
 

@@ -13,15 +13,16 @@ import { Link, useParams } from "react-router-dom";
 
 
 
-function Chat() {
+function ChatUser() {
     const [users, setUsers] = useState([])
     const { id } = useParams();
     const user_id = id;
     const [message, setMessage] = useState({
-
         message_content: "",
         user_id: "",
     });
+    const [texts, setTexts] = useState([]);
+   
 
     const handleInput = (e) => {
         setMessage({ ...message, [e.target.name]: e.target.value });
@@ -37,10 +38,23 @@ function Chat() {
         users()
     }, [])
 
+
+    useEffect(() => {
+        async function messages() {
+            const res = await axios.get(`http://127.0.0.1:8000/api/user/messages/${id}`);
+            if (res.data.status === 200) {
+                setTexts(res.data.chat);
+             
+            }
+        }
+        messages()
+    }, [])
+
+
     const sendMessage = async (e) => {
         e.preventDefault();
         const data = {
-            message_content: message.message,
+            message_content: message.message_content,
             user_id: message.user_id,
         }
 
@@ -106,45 +120,43 @@ function Chat() {
                             <div className="chat-line"></div>
 
                             <div className="chat">
-                                <div className="message-container">
-                                    <div className="message-owner">
-                                        <img src={userprofile} alt="" />
-                                        <h2>Enola Holmes</h2>
-                                        <h3>Jan 5, 3:54 PM</h3>
 
-                                    </div>
-                                    <div className="message">
-                                        <h2>Hi, How you doing ? </h2>
-                                    </div>
-                                    <div className="message-owner">
-                                        <img src={userprofile} alt="" />
-                                        <h2>Enola Holmes</h2>
-                                        <h3>Jan 5, 3:54 PM</h3>
+                                {texts.map((user) => {
+                                    console.log(user);
+                                    return (
+                                        <div className="message-container" key={user.id}>
+                                            <div className="message-owner">
+                                                <h2>{user.sender.username}</h2>
+                                                <h3>Jan 5, 3:54 PM</h3>
 
-                                    </div>
-                                    <div className="message">
-                                        <h2>Hi, How you doing ? </h2>
-                                    </div>
-
-
-
-                                </div>
-                                <form onSubmit={sendMessage}>
-                                    <div className="message-input">
-                                        <div className="chat-icons">
-                                            <img src={emojis} alt="" className="chat-ico" />
-                                            <img src={file} alt="" className="chat-ico" />
-                                            <img src={video} alt="" className="chat-ico" />
-                                            <img src={mic} alt="" className="chat-ico" />
-                                            <img src={send} alt="" className="chat-ico" />
+                                            </div>
+                                            <div className="message">
+                                                <h2>{user.message_content}</h2>
+                                               
+                                            </div>
                                         </div>
+                                    )
+                                })}
+
+
+
+
+                                <div className="message-input">
+                                    <div className="chat-icons">
+                                        <img src={emojis} alt="" className="chat-ico" />
+                                        <img src={file} alt="" className="chat-ico" />
+                                        <img src={video} alt="" className="chat-ico" />
+                                        <img src={mic} alt="" className="chat-ico" />
+                                        <img src={send} alt="" className="chat-ico" />
+                                    </div>
+                                    <form onSubmit={sendMessage}>
                                         <label>
                                             <input type="hidden" name="user_id" value={message.user_id} />
                                         </label>
-                                        <input type="text" name="message" className="text" placeholder="Type Message here !" onChange={handleInput} value={message.message_content}/>
+                                        <input type="text" name="message_content" className="text" placeholder="Type Message here !" onChange={handleInput} value={message.message_content} />
 
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
 
                             </div>
 
@@ -161,16 +173,16 @@ function Chat() {
                             </div>
                             {users.map((user) => {
                                 return (
-                                    <div className="right-users-profiles">
-                                       <Link to={`users/${user.id}`}>
-                                       <div className="chat-right-users">
-                                            <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
-                                            <div className="chat-users">
-                                                <h2>{user.username}</h2>
+                                    <div className="right-users-profiles" key={user.id}>
+                                        <Link to={`${user.id}`}>
+                                            <div className="chat-right-users">
+                                                <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
+                                                <div className="chat-users">
+                                                    <h2>{user.username}</h2>
+
+                                                </div>
 
                                             </div>
-
-                                        </div>
                                         </Link>
                                         <div className="users-line"></div>
                                     </div>
@@ -191,4 +203,4 @@ function Chat() {
     )
 }
 
-export default Chat;
+export default ChatUser;

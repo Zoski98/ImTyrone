@@ -20,13 +20,18 @@ class CommunityController extends Controller
     }
     public function post(Request $request)
     {
-        $post = new Post([
-            'user_id' => auth()->user()->id,
-            'post_title' => $request->input('post_title'),
-            'post_content' => $request->input('post_content'),
-            'image' => $request->input('file'),
-            'section' => 2,
-        ]);
+        $post = new Post;
+        $post->user_id = auth()->user()->id;
+        $post->post_title = $request->input('post_title');
+        $post->post_content = $request->input('post_content');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads/images/'), $filename);
+            $post->image = 'uploads/images/' . $filename;
+        }
+        $post->section = 2;
         $post->save();
 
         return response()->json([

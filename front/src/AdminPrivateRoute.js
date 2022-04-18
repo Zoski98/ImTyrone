@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Route, Redirect, useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import AdminHome from './pages/admin/AdminHome';
-import World from "./pages/admin/World";
 
 
 
