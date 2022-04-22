@@ -9,12 +9,14 @@ import mic from "../../media/ZoubairIcons/Message/PNG/mic.png"
 import send from "../../media/ZoubairIcons/Message/PNG/send.png"
 import video from "../../media/ZoubairIcons/Message/PNG/video.png"
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
+import moment from "moment";
 
 
 
 function ChatUser() {
     const [users, setUsers] = useState([])
+    const [receiver, setReceiver] = useState([])
     const { id } = useParams();
     const user_id = id;
     const [message, setMessage] = useState({
@@ -22,7 +24,8 @@ function ChatUser() {
         user_id: "",
     });
     const [texts, setTexts] = useState([]);
-   
+    const history = useHistory();
+
 
     const handleInput = (e) => {
         setMessage({ ...message, [e.target.name]: e.target.value });
@@ -44,11 +47,28 @@ function ChatUser() {
             const res = await axios.get(`http://127.0.0.1:8000/api/user/messages/${id}`);
             if (res.data.status === 200) {
                 setTexts(res.data.chat);
-             
+
             }
         }
         messages()
     }, [])
+
+    useEffect(() => {
+        async function receiver() {
+            const res = await axios.get(`http://127.0.0.1:8000/api/user/receiver/${id}`);
+            if (res.data.status === 200) {
+                setReceiver(res.data.records);
+                
+            }
+        }
+        receiver()
+    }, [])
+
+
+
+
+
+
 
 
     const sendMessage = async (e) => {
@@ -66,6 +86,7 @@ function ChatUser() {
                 setMessage({
                     message_content: '',
                 });
+                window.location.reload()
 
 
 
@@ -109,9 +130,9 @@ function ChatUser() {
                         <div className="chat-left-bottom">
 
                             <div className="chat-top">
-                                <img src={userprofile} alt="" className="user-chat" />
+                                {/* <img src={`http://127.0.0.1:8000/${user.receiver.file}`} alt="" className="user-chat" /> */}
                                 <div className="chat-status">
-                                    <h2 className="user-name-chat">Enola Holmes</h2>
+                                    {/* <h2 className="user-name-chat">{receiver.receiver.username}</h2> */}
                                     <h2 className="status">Active</h2>
                                 </div>
                                 <img src="" alt="" className="dots" />
@@ -126,13 +147,14 @@ function ChatUser() {
                                     return (
                                         <div className="message-container" key={user.id}>
                                             <div className="message-owner">
+                                                <img src={`http://127.0.0.1:8000/${user.sender.file}`} alt="" />
                                                 <h2>{user.sender.username}</h2>
-                                                <h3>Jan 5, 3:54 PM</h3>
+                                                <h3>{moment(user.created_at).fromNow()}</h3>
 
                                             </div>
                                             <div className="message">
                                                 <h2>{user.message_content}</h2>
-                                               
+
                                             </div>
                                         </div>
                                     )
@@ -141,26 +163,26 @@ function ChatUser() {
 
 
 
-                                <div className="message-input">
-                                    <div className="chat-icons">
-                                        <img src={emojis} alt="" className="chat-ico" />
-                                        <img src={file} alt="" className="chat-ico" />
-                                        <img src={video} alt="" className="chat-ico" />
-                                        <img src={mic} alt="" className="chat-ico" />
-                                        <img src={send} alt="" className="chat-ico" />
-                                    </div>
-                                    <form onSubmit={sendMessage}>
-                                        <label>
-                                            <input type="hidden" name="user_id" value={message.user_id} />
-                                        </label>
-                                        <input type="text" name="message_content" className="text" placeholder="Type Message here !" onChange={handleInput} value={message.message_content} />
 
-                                    </form>
-                                </div>
 
                             </div>
 
+                            <div className="message-input">
+                                <div className="chat-icons">
+                                    <img src={emojis} alt="" className="chat-ico" />
+                                    <img src={file} alt="" className="chat-ico" />
+                                    <img src={video} alt="" className="chat-ico" />
+                                    <img src={mic} alt="" className="chat-ico" />
+                                    <img src={send} alt="" className="chat-ico" />
+                                </div>
+                                <form onSubmit={sendMessage}>
+                                    <label>
+                                        <input type="hidden" name="user_id" value={message.user_id} />
+                                    </label>
+                                    <input type="text" name="message_content" className="text" placeholder="Type Message here !" onChange={handleInput} value={message.message_content} />
 
+                                </form>
+                            </div>
 
                         </div>
                     </div>

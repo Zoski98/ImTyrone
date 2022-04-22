@@ -90,6 +90,15 @@ class UserController extends Controller
         $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->type = $request->input('type');
+        if($request->hasFile('file'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() .'.'.$extension;
+            $file->move(public_path('uploads/images/'), $filename);
+            $user->file = 'uploads/images/'.$filename;
+        }
+    
         $user->update();
 
         return response()->json([

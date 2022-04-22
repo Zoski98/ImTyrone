@@ -30,7 +30,7 @@ function AdminHome() {
                     </Link>
                 </li>
                 <li className="routes">
-                    <Link to="/users">
+                    <Link to="/useres">
                         <img src={users} className="icons" alt="" />
                     </Link>
                 </li>

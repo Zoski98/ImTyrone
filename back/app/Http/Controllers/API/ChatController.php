@@ -43,12 +43,21 @@ class ChatController extends Controller
         ->orWhere([
             ['user_receiver', $user_id],
             ['user_sender', $id]
-        ])->latest()
+        ])->orderBy('created_at', 'asc')
         ->get();
 
         return response()->json([
             'status' => 200,
             'chat' => $records,
+        ]);
+    }
+
+    public function receiver($id)
+    {
+        $receiver = Chat::with('receiver')->where('user_receiver','=', $id)->firstOrFail()->get();
+        return response()->json([
+            'status' => 200,
+            'records' => $receiver,
         ]);
     }
 

@@ -92,6 +92,7 @@ Route::middleware(['auth:sanctum', 'isAPIUser'])->group(function () {
     Route::get('user/feed/posts', [UserController::class, 'fpost']);
     Route::post('user/message/{id}', [ChatController::class, 'chat']);
     Route::get('user/chat', [ChatController::class, 'index']);
+    Route::get('user/receiver/{id}', [ChatController::class, 'receiver']);
     // SHOWF
     Route::get('user/show/post/{id}', [PostController::class, 'showU']);
     Route::get('user/messages/{id}', [ChatController::class, 'messages']);

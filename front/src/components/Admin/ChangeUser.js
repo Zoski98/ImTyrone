@@ -21,7 +21,11 @@ function EditUsers() {
     const handleInput = (e) => {
         setChange({ ...changeInput, [e.target.name]: e.target.value });
     }
+    const [imagedata, setImagedata] = useState("");
 
+    const handleImage = (file) => {
+        setImagedata(file[0]);
+    };
 
     useEffect(() => {
         async function change() {
@@ -32,7 +36,9 @@ function EditUsers() {
                     password: res.data.users.password,
                     email: res.data.users.email,
                     type: res.data.users.type,
+                    file: res.data.users.file,
                 });
+
             }
         }
         change()
@@ -44,7 +50,7 @@ function EditUsers() {
             e.preventDefault();
             document.getElementById('update').disabled = true;
             document.getElementById('update').innerText = "Updating";
-            const res = await axios.put(`http://127.0.0.1:8000/api/update-user/${user_id}`, changeInput);
+            const res = await axios.put(`http://127.0.0.1:8000/api/update-user/${user_id}`, changeInput, imagedata);
             if (res.data.status === 200) {
                 document.getElementById('update').disabled = false;
                 document.getElementById('update').innerText = "Update ";
@@ -54,7 +60,7 @@ function EditUsers() {
                     icon: "success",
                     button: "Continue...",
                 });
-                history.push("/users");
+                history.push("/useres");
 
 
 
@@ -76,7 +82,7 @@ function EditUsers() {
                                 <input type="text" placeholder="Username" name='username' onChange={handleInput} value={changeInput.username} />
                                 <input type="text" placeholder="Email Adress" name='email' onChange={handleInput} value={changeInput.email} />
                                 <input type="password" placeholder="Change Password" name='password' onChange={handleInput} value={changeInput.password} />
-                                <input type="file" name='file' onChange={handleInput} value={changeInput.file} />
+                                <input type="file" name='image' onChange={e => handleImage(e.target.files)} />
                                 <input type="submit" id="update" value="Change it !" />
 
                             </form>

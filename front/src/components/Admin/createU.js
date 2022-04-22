@@ -48,7 +48,7 @@ function CreateU() {
                     icon: "success",
                     button: "Continue...",
                 });
-                history.push('/section');
+                history.push('/useres');
                 setRegister({
                     username: '',
                     email: '',

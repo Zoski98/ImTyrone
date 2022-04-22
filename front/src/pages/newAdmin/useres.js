@@ -55,7 +55,7 @@ function Useres() {
                                     <td>{item.id}</td>
                                     <td>{item.username}</td>
                                     <td>{item.email}</td>
-                                    <td><img src={item.file} alt="" ></img></td>
+                                    <td><img src={`http://127.0.0.1:8000/${item.file}`} className='profile-user' alt="" ></img></td>
                                     <td>{item.type}</td>
                                     <td>
                                         <Link to={`edit-user/${item.id}`} id='create' className="btn btn-success btn-sm">Edit</Link>
