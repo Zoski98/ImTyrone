@@ -56,11 +56,12 @@ function ShowPost() {
                     icon: "success",
                     button: "Continue...",
                 });
+                window.location.reload()
                 setCreate({
                     reply_content: '',
                     file: '',
                 });
-                history.push(`/show/post/${post_id}`)
+               
 
 
 
@@ -185,12 +186,6 @@ function ShowPost() {
                             </div>
                         )
                     })}
-
-
-
-
-
-
 
                 </div>
 

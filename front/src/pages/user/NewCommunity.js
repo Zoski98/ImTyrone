@@ -115,7 +115,7 @@ function NewCommunity() {
           icon: "success",
           button: "Continue",
       });
-      history.push('users/community');
+      window.location.reload()
         
       }
     });

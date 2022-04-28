@@ -63,7 +63,7 @@ class ChatController extends Controller
 
     public function index()
     {
-        $users = User::all()->random(6)->where('type', '=' , '2');
+        $users = User::all()->where('type', '=' , '2');
         return response()->json([
             'status' => 200,
             'users' => $users,

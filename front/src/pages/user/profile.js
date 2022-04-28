@@ -5,19 +5,29 @@ import comments from "../../media/ZoubairIcons/Feed/PNG/comments.png"
 import saved from "../../media/ZoubairIcons/Feed/PNG/saved.png"
 import share from "../../media/ZoubairIcons/Feed/PNG/share.png"
 import map from "../../media/earth2.png"
+import logout from '../../media/shutdown.png';
+
 
 
 
 import Sidebars from "../../components/NewSidebar";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import swal from "sweetalert";
 
 function Profile() {
-
+    const history = useHistory()
     const [user, setUser] = useState([])
     const [world, setWorld] = useState([])
     const [community, setCommunity] = useState([])
     const [feed, setFeed] = useState([])
+    const logoutSubmit = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('auth_name');
+        localStorage.removeItem('auth_token');
+        swal("You logged out !", "See you soon...", "success");
+        history.push("/getin")
+    }
 
     useEffect(() => {
         async function user() {
@@ -73,7 +83,11 @@ function Profile() {
             <section className="profile-container">
                 <div className="left-profile">
                     <div className="profile-details">
-                        <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
+                    <a href='#' onClick={logoutSubmit} >
+                        <img src={logout} alt="yo" id='logout-ico' />
+                        <span className="link-text">Log Out</span>
+                    </a>
+                        <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />                       
                         <Link className="edit-profile" to={`/edit/user/${user.id}`} ><a href="" className="edit-profile">Edit Profile</a></Link>
                         <h2 className="q">Username</h2>
                         <h2 className="a">{user.username}</h2>
@@ -82,7 +96,9 @@ function Profile() {
                         <h2 className="q">Password</h2>
                         <h2 className="a">******</h2>
                         <img src={usertype} alt="" />
+                        
                     </div>
+                    
                 </div>
                 <div className="right-profile">
                     <div className="right-profile-title">
@@ -95,7 +111,7 @@ function Profile() {
                                 return (
                                     <div className="user-posts" key={world.id}>
                                         <Link to={`/show/post/${world.id}`}><h2 className="user-title">{world.post_title}</h2></Link>
-                                        
+
                                         <img src={`http://127.0.0.1:8000/${world.image}`} alt="" className="map" />
                                         <div className="show-detailes">
                                             <div className="icon-containers" >
@@ -127,8 +143,8 @@ function Profile() {
                             {community.map((community) => {
                                 return (
                                     <div className="user-posts" key={community.id}>
-                                        <h2 className="user-title">{community.post_title}</h2>
-                                        <img src={map} alt="" className="map" />
+                                        <Link to={`/show/post/${community.id}`} className="linkto" ><h2 class="user-title">{community.post_title}</h2></Link>
+                                        <img src={`http://127.0.0.1:8000/${community.image}`} alt="" className="map" />
                                         <div className="show-detailes">
                                             <div className="icon-containers" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="23.732" height="22.819" viewBox="0 0 23.732 22.819">
@@ -157,8 +173,10 @@ function Profile() {
                             {feed.map((post) => {
                                 return (
                                     <div className="user-posts" key={post.id}>
-                                        <h2 className="user-title">{post.post_title}</h2>
-                                        <img src={map} alt="" className="map" />
+                                        <Link to={`/show/post/${post.id}`} className="linkto" ><h2 class="user-title">{post.post_title}</h2></Link>
+
+                                        
+                                        <img src={`http://127.0.0.1:8000/${post.image}`} alt="" className="map" />
                                         <div className="show-detailes">
                                             <div className="icon-containers" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="23.732" height="22.819" viewBox="0 0 23.732 22.819">

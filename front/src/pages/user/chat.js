@@ -161,8 +161,8 @@ function Chat() {
                             </div>
                             {users.map((user) => {
                                 return (
-                                    <div className="right-users-profiles">
-                                       <Link to={`users/${user.id}`}>
+                                    <div className="right-users-profiles" key={user.id}>
+                                       <Link to={`/${user.id}`}>
                                        <div className="chat-right-users">
                                             <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
                                             <div className="chat-users">

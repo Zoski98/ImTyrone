@@ -27,7 +27,7 @@ function Useres() {
             deletedUser.closest('tr').remove();
             console.log(res.data.message);
         }
-        history.push('/users')
+        history.push('/useres')
     }
 
 

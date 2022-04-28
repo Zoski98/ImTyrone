@@ -74,19 +74,19 @@ const Home = () => {
                     <div className="minifut-right">
                         <div className="faqs-questions">
                             <h2 className='faqs-question'>It is possible to be active on both parts of the web ?</h2>
-                            <h2>+</h2>
+                            <h2 className='plus'>+</h2>
                         </div>
                         <div className="faqs-questions">
                             <h2 className='faqs-question'>Is it possible to have various posts at the same time  ?</h2>
-                            <h2>+</h2>
+                            <h2 className='plus'>+</h2>
                         </div>
                         <div className="faqs-questions">
                             <h2 className='faqs-question'>I want to became a Founder Father, how should i do that ?</h2>
-                            <h2>+</h2>
+                            <h2 className='plus'>+</h2>
                         </div>
                         <div className="faqs-questions">
                             <h2 className='faqs-question'>If im not happy with your service, can i get my money back ?</h2>
-                            <h2>+</h2>
+                            <h2 className='plus'>+</h2>
                         </div>
 
 

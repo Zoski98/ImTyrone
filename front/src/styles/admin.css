@@ -224,3 +224,37 @@
 .routes img:hover{height: 30rem;width: 30rem;transition: 600ms ease-in-out;}
 .icons{width: 25rem;height: 25rem;}
 .status-td{text-align: center;}
+
+
+@media only screen and (max-width:42.8rem){
+
+
+  .navbar{
+    bottom: 0;
+    height: 7rem;
+    width: 100vw;
+    border-radius: 0;
+    flex-direction: row;
+  }
+  
+  .navbar-nav{
+    flex-direction: row;
+    height: 7rem;
+  }
+  
+  .navbar:hover{width:100%;}
+  
+  .logos{display: none;}
+  .nav-item{width: 5.5%;}
+  .navbar:hover .link-text{
+    display: none;
+  }
+
+  .tables{padding: 0;}
+  #create{font-size: 1rem;}
+  #admin-table{font-size: 3.5rem;margin-bottom: 7rem;}
+  .profile-user{width: 4rem;height: 4rem;}
+  
+
+}
+

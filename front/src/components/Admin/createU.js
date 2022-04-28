@@ -40,11 +40,9 @@ function CreateU() {
 
             if (res.data.status === 200) {
 
-                localStorage.setItem('auth_name', res.data.username);
-                localStorage.setItem('auth_token', res.data.token);
                 swal({
-                    title: "Welcome!",
-                    text: "You are now registered!",
+                    title: "Good job!",
+                    text: "You added an user to the web!",
                     icon: "success",
                     button: "Continue...",
                 });

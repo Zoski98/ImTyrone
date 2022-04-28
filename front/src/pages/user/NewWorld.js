@@ -107,7 +107,7 @@ function NewWorld() {
           post_content: '',
           image: '',
         });
-      } history.push('/users/world');
+      } window.location.reload()
     });
 
   }

@@ -97,6 +97,7 @@ function ShowAdmin() {
                     postes: res.data.postes,
                     username: res.data.posts.user.username,
                     post_title: res.data.posts.post_title,
+                    image: res.data.posts.image,
                     post_content: res.data.posts.post_content,
                     usernames: res.data.posts.user.username,
                     reply_content: res.data.postes.reply_content,
@@ -126,7 +127,8 @@ function ShowAdmin() {
                     <div className="show-post">
                         <h2 className="show-post-title">{state.post_title}</h2>
                         <h2 className="show-post-content">{state.post_content}</h2>
-                        <img src={map} alt="" className="show-post-img" />
+                        <img src={`http://127.0.0.1:8000/${state.image}`} alt="" className="show-post-img" />
+
                     </div>
 
                     <div className="show-details">

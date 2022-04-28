@@ -88,7 +88,6 @@ function App() {
         <UserPrivateRoute path='/show/post/:id' component={ShowPost} />
         <UserPrivateRoute path='/edit/user/:id' component={EditUser} />
         <UserPrivateRoute path='/chat' component={Chat}/>
-        <UserPrivateRoute path='/users/:id' component={ChatUser}/>
         <UserPrivateRoute path='/:id' component={ChatUser}/>
 
         <Route path="/403" component={Page403} />

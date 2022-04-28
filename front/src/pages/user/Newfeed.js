@@ -24,6 +24,7 @@ function Feed() {
         button.classList.toggle('side-active');
     }
 
+
     const createOff = () => {
         let container = document.getElementById('create-post');
         let serious = document.getElementById('serious-parts');
@@ -63,16 +64,16 @@ function Feed() {
         test()
     }, [])
 
-    
-  useEffect(() => {
-    async function user() {
-      const res = await axios.get('http://127.0.0.1:8000/api/current/user');
-      if (res.data.status === 200) {
-        setUser(res.data.user)
-      }
-    }
-    user()
-  }, [])
+
+    useEffect(() => {
+        async function user() {
+            const res = await axios.get('http://127.0.0.1:8000/api/current/user');
+            if (res.data.status === 200) {
+                setUser(res.data.user)
+            }
+        }
+        user()
+    }, [])
 
     useEffect(() => {
         async function stories() {
@@ -97,8 +98,8 @@ function Feed() {
     const [imagedata, setImagedata] = useState("");
 
     const handleImage = (file) => {
-      setImagedata(file[0]);
-  };
+        setImagedata(file[0]);
+    };
 
     const createPost = async (e) => {
         e.preventDefault();
@@ -107,8 +108,8 @@ function Feed() {
         data.append("image", imagedata);
         data.append("post_title", createInput.post_title);
         data.append("post_content", createInput.post_content);
-     
-       
+
+
         await axios.post('http://127.0.0.1:8000/api/user/feed/create/post', data).then(res => {
 
             if (res.data.status === 200) {
@@ -124,7 +125,7 @@ function Feed() {
                     icon: "success",
                     button: "Continue",
                 });
-                history.push('users/community');
+                window.location.reload()
 
             }
         });
@@ -168,7 +169,7 @@ function Feed() {
                 </div>
 
             </div>
-            <section className="feed-container">
+            <section className="feed-containers" id="serious-parts"> <div className="feed-container" >
                 <div className="feed-content">
                     <div className="feed-story">
                         {stories.map((user) => {
@@ -179,8 +180,6 @@ function Feed() {
                                 </div>
                             )
                         })}
-
-
 
                     </div>
                     <div className="feed-content-selection">
@@ -197,10 +196,11 @@ function Feed() {
                         {state.map((post) => {
                             return (
                                 <div className="feed-post" key={post.id}>
-                                    <h2 className="feed-post-title">{post.post_title}</h2>
-                                    <div className="feed-image">  <h2>{post.post_content}</h2>
+                                    <Link to={`/show/post/${post.id}`} className="linkto" ><h2 class="feed-post-title">{post.post_title}</h2></Link>
+
+                                    <div className="feed-image">  <img src={`http://127.0.0.1:8000/${post.image}`} alt="" className=""/>
                                     </div>
-                                  
+
                                     <div className="feed-post-user">
                                         <img src={`http://127.0.0.1:8000/${post.user.file}`} alt="" className="user-feed-profile" />
                                         <h2 className="users-name-feed">{post.user.username}</h2>
@@ -239,23 +239,24 @@ function Feed() {
                         {suggested.map((item) => {
                             return (
                                 <div className="user-suggested" key={item.id}>
-                            <img src={`http://127.0.0.1:8000/${item.file}`} alt="" className="user-feed-profile" />
-                            <div className="username-email">
-                                <h2>{item.username}</h2>
-                                <h3>{item.email}</h3>
-                            </div>
-                            <h2 className="suggest-but">Follow</h2>
-                        </div>
+                                    <img src={`http://127.0.0.1:8000/${item.file}`} alt="" className="user-feed-profile" />
+                                    <div className="username-email">
+                                        <h2>{item.username}</h2>
+                                        <h3>{item.email}</h3>
+                                    </div>
+                                    <h2 className="suggest-but">Follow</h2>
+                                </div>
                             )
                         })}
-                        
-                       
+
+
                     </div>
                     <div className="feed-right-bar"></div>
 
 
                 </div>
-            </section>
+            </div></section>
+
         </>
 
     )
