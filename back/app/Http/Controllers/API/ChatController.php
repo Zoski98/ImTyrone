@@ -54,7 +54,7 @@ class ChatController extends Controller
 
     public function receiver($id)
     {
-        $receiver = Chat::with('receiver')->where('user_receiver','=', $id)->firstOrFail()->get();
+        $receiver = Chat::with('receiver')->where('user_receiver','=', $id)->get();
         return response()->json([
             'status' => 200,
             'records' => $receiver,

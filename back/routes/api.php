@@ -86,6 +86,7 @@ Route::middleware(['auth:sanctum', 'isAPIUser'])->group(function () {
     // USER
     Route::get('current/user', [UserController::class, 'currentuser']);
     Route::get('user/stories', [UserController::class, 'stories']);
+    Route::get('user/stories/responsive', [UserController::class, 'storiesR']);
     Route::get('user/suggested', [UserController::class, 'suggested']);
     Route::get('user/world/posts', [UserController::class, 'wpost']);
     Route::get('user/community/posts', [UserController::class, 'cpost']);

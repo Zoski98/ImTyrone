@@ -95,7 +95,7 @@ function Profile() {
                         <h2 className="a">{user.email}</h2>
                         <h2 className="q">Password</h2>
                         <h2 className="a">******</h2>
-                        <img src={usertype} alt="" />
+                        <img src={usertype} id="type-profile" alt="" />
                         
                     </div>
                     

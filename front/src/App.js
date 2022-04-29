@@ -28,6 +28,7 @@ import EditUsers from './components/Admin/ChangeUser';
 import EditUser from './pages/user/EditUser';
 import Feed from './pages/user/Newfeed';
 import ChatUser from './pages/user/chatUser';
+import ChatResponsive from './pages/user/chatresponsive';
 
 
 axios.defaults.baseURL = "http://localhost:8000/";
@@ -88,7 +89,8 @@ function App() {
         <UserPrivateRoute path='/show/post/:id' component={ShowPost} />
         <UserPrivateRoute path='/edit/user/:id' component={EditUser} />
         <UserPrivateRoute path='/chat' component={Chat}/>
-        <UserPrivateRoute path='/:id' component={ChatUser}/>
+        <UserPrivateRoute path='/messages/:id' component={ChatUser}/>
+        <UserPrivateRoute path='/phone/:id' component={ChatResponsive}/>
 
         <Route path="/403" component={Page403} />
         <Route path="/404" component={Page404} />

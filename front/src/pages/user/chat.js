@@ -70,7 +70,7 @@ function Chat() {
             <Sidebars />
             <section className="chat-container">
 
-                <div class="serious-top">
+                <div class="serious-top-chat">
                     <div class="search">
                         <img src={search} alt="" className="searchs" />
                         <input type="text" name="search" id="search" placeholder="Search" />
@@ -129,25 +129,25 @@ function Chat() {
 
 
                                 </div>
-                                <form onSubmit={sendMessage}>
-                                    <div className="message-input">
-                                        <div className="chat-icons">
-                                            <img src={emojis} alt="" className="chat-ico" />
-                                            <img src={file} alt="" className="chat-ico" />
-                                            <img src={video} alt="" className="chat-ico" />
-                                            <img src={mic} alt="" className="chat-ico" />
-                                            <img src={send} alt="" className="chat-ico" />
-                                        </div>
-                                        <label>
-                                            <input type="hidden" name="user_id" value={message.user_id} />
-                                        </label>
-                                        <input type="text" name="message" className="text" placeholder="Type Message here !" onChange={handleInput} value={message.message_content}/>
 
-                                    </div>
-                                </form>
 
                             </div>
+                            <form onSubmit={sendMessage}>
+                                <div className="message-input">
+                                    <div className="chat-icons">
+                                        <img src={emojis} alt="" className="chat-ico" />
+                                        <img src={file} alt="" className="chat-ico" />
+                                        <img src={video} alt="" className="chat-ico" />
+                                        <img src={mic} alt="" className="chat-ico" />
+                                        <img src={send} alt="" className="chat-ico" />
+                                    </div>
+                                    <label>
+                                        <input type="hidden" name="user_id" value={message.user_id} />
+                                    </label>
+                                    <input type="text" name="message" className="text" placeholder="Type Message here !" onChange={handleInput} value={message.message_content} />
 
+                                </div>
+                            </form>
 
 
                         </div>
@@ -162,18 +162,29 @@ function Chat() {
                             {users.map((user) => {
                                 return (
                                     <div className="right-users-profiles" key={user.id}>
-                                       <Link to={`/${user.id}`}>
-                                       <div className="chat-right-users">
-                                            <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
-                                            <div className="chat-users">
-                                                <h2>{user.username}</h2>
+                                        <Link to={`messages/${user.id}`} className="web">
+                                            <div className="chat-right-users">
+                                                <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
+                                                <div className="chat-users">
+                                                    <h2>{user.username}</h2>
+
+                                                </div>
 
                                             </div>
+                                        </Link>
+                                        <Link to={`phone/${user.id}`} className="phone">
+                                            <div className="chat-right-users">
+                                                <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
+                                                <div className="chat-users">
+                                                    <h2>{user.username}</h2>
 
-                                        </div>
+                                                </div>
+
+                                            </div>
                                         </Link>
                                         <div className="users-line"></div>
                                     </div>
+                                    
                                 )
                             })}
 

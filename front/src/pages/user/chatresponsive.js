@@ -14,7 +14,7 @@ import moment from "moment";
 
 
 
-function ChatUser() {
+function ChatResponsive() {
     const [users, setUsers] = useState([])
     const [state, setState] = useState([])
     const { id } = useParams();
@@ -105,30 +105,13 @@ function ChatUser() {
     return (
         <>
             <Sidebars />
-            <section className="chat-container">
+            <section className="chat-containers">
 
-                <div class="serious-top-chat">
-                    <div class="search">
-                        <img src={search} alt="" className="searchs" />
-                        <input type="text" name="search" id="search" placeholder="Search" />
-                    </div>
-
-
-
-                    <div class="notification-icon">
-                        <img src={notification} alt="" className="icon-top" />
-                    </div>
-
-
-                </div>
-
-                <div className="chat-top-line"></div>
-                <div className="chat-bot">
-                    <div className="chat-bot-left">
-                        <div className="chat-left-upper">
-                            <h2 className="clear-chat">Clear Chat</h2>
-                            <h2 className="more-chat">More</h2>
-                        </div>
+                
+                <div className="chat-top-lines"></div>
+                <div className="chat-bots">
+                    <div className="chat-bot-lefts">
+                        
                         <div className="chat-left-bottom">
 
                             <div className="chat-top">
@@ -139,8 +122,13 @@ function ChatUser() {
                                 </div>
                                 <img src="" alt="" className="dots" />
                             </div>
+                            
 
                             <div className="chat-line"></div>
+                            <div className="chat-left-upper">
+                            <h2 className="clear-chat">Clear Chat</h2>
+                            <h2 className="more-chat">More</h2>
+                        </div>
 
                             <div className="chat">
 
@@ -187,37 +175,7 @@ function ChatUser() {
 
                         </div>
                     </div>
-                    <div className="chat-bot-right">
-                        <div className="chat-right-line"></div>
-                        <div className="chat-right-container">
-                            <div class="search-chat">
-                                <img src={search} alt="" className="searchs-chat" />
-                                <input type="text" name="search" id="searchs" placeholder="Search" />
-                            </div>
-                            {users.map((user) => {
-                                return (
-                                    <div className="right-users-profiles" key={user.id}>
-                                        <Link to={`/messages/${user.id}`}>
-                                            <div className="chat-right-users">
-                                                <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
-                                                <div className="chat-users">
-                                                    <h2>{user.username}</h2>
-
-                                                </div>
-
-                                            </div>
-                                        </Link>
-                                        <div className="users-line"></div>
-                                    </div>
-                                )
-                            })}
-
-
-
-
-                        </div>
-
-                    </div>
+                    
                 </div>
 
             </section>
@@ -226,4 +184,4 @@ function ChatUser() {
     )
 }
 
-export default ChatUser;
+export default ChatResponsive;

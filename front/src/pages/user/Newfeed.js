@@ -50,6 +50,7 @@ function Feed() {
 
     const [post, setPost] = useState([])
     const [stories, setStories] = useState([])
+    const [storiesr, setStoriesr] = useState([])
 
     const [suggested, setSuggested] = useState([])
 
@@ -83,6 +84,17 @@ function Feed() {
             }
         }
         stories()
+    }, [])
+
+    
+    useEffect(() => {
+        async function storiesr() {
+            const res = await axios.get('http://127.0.0.1:8000/api/user/stories/responsive');
+            if (res.data.status === 200) {
+                setStoriesr(res.data.users)
+            }
+        }
+        storiesr()
     }, [])
 
     useEffect(() => {
@@ -171,6 +183,17 @@ function Feed() {
             </div>
             <section className="feed-containers" id="serious-parts"> <div className="feed-container" >
                 <div className="feed-content">
+                    <div className="feed-storyr">
+                    {storiesr.map((user) => {
+                            return (
+                                <div className="user-story" key={user.id}>
+                                    <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
+                                    <h2>{user.username}</h2>
+                                </div>
+                            )
+                        })}
+
+                    </div>
                     <div className="feed-story">
                         {stories.map((user) => {
                             return (

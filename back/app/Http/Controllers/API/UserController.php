@@ -37,6 +37,14 @@ class UserController extends Controller
 
     public function stories()
     {
+        $users = User::all()->random(10);
+        return response()->json([
+            'status' => 200,
+            'users' => $users,
+        ]);
+    }
+    public function storiesR()
+    {
         $users = User::all()->random(6);
         return response()->json([
             'status' => 200,
