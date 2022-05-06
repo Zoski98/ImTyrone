@@ -58,7 +58,8 @@ function ChatUser() {
             const res = await axios.get(`http://127.0.0.1:8000/api/user/receiver/${user_id}`);
             if (res.data.status === 200) {
                 setState({
-                    receiver:res.data.records.receiver.user_id,
+                    receiver:res.data.records.username,
+                    receiver_img:res.data.records.file
                 });
                 
             }
@@ -132,7 +133,7 @@ function ChatUser() {
                         <div className="chat-left-bottom">
 
                             <div className="chat-top">
-                                {/* <img src={`http://127.0.0.1:8000/${receiver.user}`} alt="" className="user-chat" /> */}
+                                <img src={`http://127.0.0.1:8000/${state.receiver_img}`} alt="" className="user-chat" />
                                 <div className="chat-status">
                                     <h2 className="user-name-chat">{state.receiver}</h2>
                                     <h2 className="status">Active</h2>
@@ -197,7 +198,7 @@ function ChatUser() {
                             {users.map((user) => {
                                 return (
                                     <div className="right-users-profiles" key={user.id}>
-                                        <Link to={`/messages/${user.id}`}>
+                                        <Link to={`/messages/${user.id}`} onClick={() => window.location.reload()}>
                                             <div className="chat-right-users">
                                                 <img src={`http://127.0.0.1:8000/${user.file}`} alt="" />
                                                 <div className="chat-users">

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
@@ -54,7 +54,7 @@ class ChatController extends Controller
 
     public function receiver($id)
     {
-        $receiver = Chat::with('receiver')->where('user_receiver','=', $id)->get();
+        $receiver = User::where('id','=', $id)->first();
         return response()->json([
             'status' => 200,
             'records' => $receiver,
@@ -63,7 +63,7 @@ class ChatController extends Controller
 
     public function index()
     {
-        $users = User::all()->where('type', '=' , '2');
+        $users = User::all()->where('type', '=' , '2')->except(Auth::id());
         return response()->json([
             'status' => 200,
             'users' => $users,

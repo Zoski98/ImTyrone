@@ -3,6 +3,7 @@ import Sidebars from "../../components/NewSidebar";
 import search from '../../media/ZoubairIcons/Feed/PNG/search.png'
 import notification from '../../media/ZoubairIcons/Feed/PNG/Group-35114.png'
 import userprofile from '../../media/Illustrations/user-profile.png'
+import bulb from '../../media/bulb.png'
 import emojis from "../../media/ZoubairIcons/Message/PNG/emojis.png"
 import file from "../../media/ZoubairIcons/Message/PNG/file.png"
 import mic from "../../media/ZoubairIcons/Message/PNG/mic.png"
@@ -117,13 +118,13 @@ function Chat() {
                                         <h2>Hi, How you doing ? </h2>
                                     </div>
                                     <div className="message-owner">
-                                        <img src={userprofile} alt="" />
-                                        <h2>Enola Holmes</h2>
+                                        <img src={bulb} alt="" />
+                                        <h2>Mycroft Holmes</h2>
                                         <h3>Jan 5, 3:54 PM</h3>
 
                                     </div>
                                     <div className="message">
-                                        <h2>Hi, How you doing ? </h2>
+                                        <h2>Where are you ? Time to eat !! </h2>
                                     </div>
 
 

@@ -391,12 +391,12 @@ body::-webkit-scrollbar-track{display: none;}
 .chat-left-bottom{margin-left: 3rem; width: 95%;height: 85%;background-color: #171717;border-radius: 3rem;}
 .chat-top{display: flex;padding-left: 3rem;height: 10rem;align-items: center;}
 .chat{overflow: auto; height: 55%;display: flex;flex-direction: column;justify-content: space-between;}
-.user-chat{width: 6rem;height: 6rem;}
+.user-chat{width: 6rem;height: 6rem;border-radius: 3rem;}
 .chat-line{width: 100%;height: 0.1rem;background-color: white;}
 .chat-status{padding-left: 4rem;}
 .status{font-size: 1.5rem;}
 .message-owner{display: flex;height: 5rem;align-items: center;padding-left: 3rem;margin-top: 3rem;}
-.message-owner img{width: 4rem;height: 4rem;margin-right: 2rem;}
+.message-owner img{width: 4rem;height: 4rem;margin-right: 2rem;border-radius: 2rem;}
 .message-owner h2{font-weight: bold; margin-right: 2rem;}
 .message-owner h3{font-size: 1.5rem;color: grey;}
 .message-container{display: flex;flex-direction: column;width: 100%;min-height: 15rem;}

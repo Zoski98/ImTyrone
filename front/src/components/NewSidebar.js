@@ -57,7 +57,9 @@ const Sidebars = () => {
                             <img src={chat} alt="" className='side-img' />
 
                             <h2 class="side-txt">CHAT</h2>
-                        </div></Link>
+                        </div>
+                    </Link>
+                    
                     <Link to='/users/profile' className="linkto" >
 
                         <div class="side-icon">
