@@ -37,7 +37,7 @@ class UserController extends Controller
 
     public function stories()
     {
-        $users = User::all()->random(10);
+        $users = User::where('type', '=', '2')->inRandomOrder()->limit(10)->get();
         return response()->json([
             'status' => 200,
             'users' => $users,
@@ -45,7 +45,7 @@ class UserController extends Controller
     }
     public function storiesR()
     {
-        $users = User::all()->random(6)->where('user_type','=','2');
+        $users = User::where('type', '=', '2')->inRandomOrder()->limit(6)->get();
         return response()->json([
             'status' => 200,
             'users' => $users,
@@ -54,7 +54,7 @@ class UserController extends Controller
 
     public function suggested()
     {
-        $users = User::all()->random(5);
+        $users = User::where('type', '=', '2')->inRandomOrder()->limit(5)->get();;
         return response()->json([
             'status' => 200,
             'users' => $users,

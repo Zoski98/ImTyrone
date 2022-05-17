@@ -228,7 +228,6 @@ body::-webkit-scrollbar-track{display: none;}
 .side-icon:hover .side-txt{color: black;}
 
 /* WORLD-COMMUNITY POSTS */
-#right{height: 30%;}
 .serious-part{
   margin-left: 10rem;
   width: auto;
@@ -276,7 +275,7 @@ body::-webkit-scrollbar-track{display: none;}
 .serious-bot-right{width: 25%;display: flex;}
 .serious-bot-right-bar{height:90% ;background-color: grey;width: 0.1rem;margin-left: 1.5rem;margin-right: 1.5rem;}
 .serious-bot-right-posts{display: flex;flex-direction: column;width: 100%;height:30%}
-.right-posts{height: 50%;width: 100%;}
+.right-posts{height: 100%;width: 100%;}
 .right-posts-categories{height: 10%;font-size: 3rem;margin-bottom: 1rem;text-align: center;padding-top: 1rem;font-size: 3rem;}
 .post-category{font-size: 3rem;}
 .right-posts-container{height: 100%;}
@@ -545,7 +544,7 @@ body::-webkit-scrollbar-track{display: none;}
 
 .feed-post{height: 30rem;display: flex;flex-direction: column;align-items: center;justify-content: space-around;}
 
-.feed-post-user{display: flex;width: 100%;align-items: center;}
+.feed-post-user{display: flex;width: 80%;align-items: center;}
 
 .feed-image{width: 30rem;height: 20rem;border-radius: 2rem}
 .feed-image img{width: 30rem;height: 20rem;border-radius: 2rem;border: solid white 0.2rem;}
@@ -555,6 +554,7 @@ body::-webkit-scrollbar-track{display: none;}
  .feed-post-user h2{margin-bottom: 0;font-size: 1.5rem;}
 
 .feed-search{width: 100%;height: 10%;display: flex;padding-top: 1rem;padding-left: 1rem;}
+.feed-searchs{display: none; width: 100%;height: 10%;padding-top: 1rem;padding-left: 1rem;}
 .feed-suggestions{width: 100%;height: 65%;}
 .feed-right-bar{width: 100%;height: 0.2rem; background:grey;}
 .feed-users-suggested{width: 100%;height: 35%;}
@@ -643,7 +643,7 @@ body::-webkit-scrollbar-track{display: none;}
   .icon-containers img{width: 1.5rem;height: 1.5rem;}
   .show-detailes{justify-content: space-evenly;}
 
-
+  .feed-searchs{display: flex;}
   .feed-title{margin-right: 5rem;padding-left: 2rem;}
   .feed-content{width: 100%;}
   .feed-post-user{padding-left: 3rem;}

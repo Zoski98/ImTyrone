@@ -182,7 +182,17 @@ function Feed() {
 
             </div>
             <section className="feed-containers" id="serious-parts"> <div className="feed-container" >
+          
                 <div className="feed-content">
+                    <div className="feed-searchs">
+                        <div class="search">
+                            <img src={search} alt="" className="searchs" />
+                            <input type="text" name="search" id="search" placeholder="Search" />
+                        </div>
+                        <div class="upload-icons">
+                            <button className="upload-post" onClick={createOn}><img src={upload} alt="" className="icon-top" /></button>
+                        </div>
+                    </div>
                     <div className="feed-storyr">
                     {storiesr.map((user) => {
                             return (
@@ -205,6 +215,7 @@ function Feed() {
                         })}
 
                     </div>
+                    
                     <div className="feed-content-selection">
                         <h2 className="feed-title">FEED</h2>
                         <h2 className="feed-titeles">ALL</h2>
